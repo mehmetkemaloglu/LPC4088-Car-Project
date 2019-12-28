@@ -4,6 +4,13 @@
 #include "LPC407x_8x_177x_8x.h"
 #include "Library/PWM.h"
 #include "Library/GPIO.h"
+typedef enum {
+	STOP_ = 0,
+	FORWARD_ = 1,
+	LEFT_ = 2,
+	RIGHT_ = 3,
+	BACKWARD_ = 4
+} Car_Direction;
 
 void Car_Init();
 

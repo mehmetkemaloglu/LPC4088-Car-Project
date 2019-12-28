@@ -179,14 +179,14 @@ void PWM1_Init() {
 	//Enable PWM1_IRQn (Interrupt Request)
 	
 	PWM1_Write(0, 4);
-	PWM1_Write(0, 5);
+	PWM1_Write(30, 5);
 
 }
 
 void PWM1_Cycle_Rate(uint32_t period_In_Cycles) {
-	PWM0->MR0 = (PERIPHERAL_CLOCK_FREQUENCY / 1000000) * period_In_Cycles * 1000;
+	PWM1->MR0 = (PERIPHERAL_CLOCK_FREQUENCY / 1000000) * period_In_Cycles * 1000;
 	
-	PWM0->LER |= 1 << 0;
+	PWM1->LER |= 1 << 0;
 }
 
 void PWM1_Write(uint32_t T_ON, uint32_t MR_NO) {	
@@ -194,9 +194,9 @@ void PWM1_Write(uint32_t T_ON, uint32_t MR_NO) {
 		T_ON = 100;
 	}
 	
-	T_ON = (uint32_t)(((PWM0->MR0) * T_ON) / 100);
+	T_ON = (uint32_t)(((PWM1->MR0) * T_ON) / 100);
 	
-	if (T_ON == PWM0->MR0) {
+	if (T_ON == PWM1->MR0) {
 		T_ON++;
 	}
 	

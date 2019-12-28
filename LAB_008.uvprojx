@@ -427,6 +427,56 @@
               <FileType>5</FileType>
               <FilePath>.\Car.h</FilePath>
             </File>
+            <File>
+              <FileName>ADC.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Library\ADC.c</FilePath>
+            </File>
+            <File>
+              <FileName>ADC.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Library\ADC.h</FilePath>
+            </File>
+            <File>
+              <FileName>Timer.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Library\Timer.c</FilePath>
+            </File>
+            <File>
+              <FileName>Timer.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Library\Timer.h</FilePath>
+            </File>
+            <File>
+              <FileName>Ultrasonic.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Library\Ultrasonic.c</FilePath>
+            </File>
+            <File>
+              <FileName>Ultrasonic.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Library\Ultrasonic.h</FilePath>
+            </File>
+            <File>
+              <FileName>HM10.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Library\HM10.c</FilePath>
+            </File>
+            <File>
+              <FileName>HM10.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Library\HM10.h</FilePath>
+            </File>
+            <File>
+              <FileName>Serial.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Library\Serial.c</FilePath>
+            </File>
+            <File>
+              <FileName>Serial.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Library\Serial.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

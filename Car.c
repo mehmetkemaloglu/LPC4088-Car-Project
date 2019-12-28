@@ -26,7 +26,7 @@ void STOP() {
 }
 
 void GO_FORWARD_MOTOR() {
-	PWM1_Write(30, 5);
+	//PWM1_Write(30, 5);
 	//	PWM1_Write(30, 4);
 	
 	GPIO_PIN_Write(IN1_PORT, IN1_MASK, 1);
@@ -35,7 +35,7 @@ void GO_FORWARD_MOTOR() {
 }
 
 void GO_BACKWARD_MOTOR() {
-	PWM1_Write(30, 5);
+	//PWM1_Write(30, 5);
 	//	PWM1_Write(30, 4);
 
 	GPIO_PIN_Write(IN1_PORT, IN1_MASK, 0);
@@ -44,7 +44,7 @@ void GO_BACKWARD_MOTOR() {
 }
 
 void TURN_LEFT_MOTOR() {
-	PWM1_Write(30, 5);
+	//PWM1_Write(30, 5);
 	//	PWM1_Write(30, 4);
 
 	GPIO_PIN_Write(IN1_PORT, IN1_MASK, 0);
@@ -53,7 +53,7 @@ void TURN_LEFT_MOTOR() {
 }
 
 void TURN_RIGHT_MOTOR() {
-	PWM1_Write(30, 5);
+	//PWM1_Write(30, 5);
 	//	PWM1_Write(30, 4);
 
 	GPIO_PIN_Write(IN1_PORT, IN1_MASK, 1);
@@ -62,7 +62,7 @@ void TURN_RIGHT_MOTOR() {
 }
 
 void STOP_MOTOR() {
-	PWM1_Write(30, 5);
+	//PWM1_Write(30, 5);
 	//	PWM1_Write(30, 4);
 
 	GPIO_PIN_Write(IN1_PORT, IN1_MASK, 0);
