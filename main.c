@@ -10,6 +10,7 @@
 #include "Library/Ultrasonic.h"
 #include "Library/Serial.h"
 #include "Library/HM10.h"
+#include "Library/External.h"
 uint32_t status;
 uint32_t lastStatus;
 
@@ -22,19 +23,22 @@ void init() {
 	GO_FORWARD();
 	status = FORWARD_;
 	
+
 	ADC_Init();
 	
 	Timer_Init();
 	
 	ADC_Start();
 	HM10_Init();
-	/*Ultrasonic_Init();
+	External_Init();
+	
+	Ultrasonic_Init();
 	Ultrasonic_Trigger_Timer_Init();
 	Ultrasonic_Capture_Timer_Init();
 	
 	Ultrasonic_Start_Trigger_Timer();
 	
-	Serial_Init();*/
+	//Serial_Init();
 	
 	//
 	serialSelectedCommand = SERIAL_TEST;
@@ -58,39 +62,46 @@ void init() {
 	
 
 void updateTest() {
+	
 	if(serialSelectedCommand == SERIAL_FORWARD){
 		if(status != FORWARD_){
 			GO_FORWARD();
 			status = FORWARD_;
+			if(turn>=10) turn = 0;
 		}
 	}
 	else if(serialSelectedCommand == SERIAL_BACK){
 		if(status != BACKWARD_){
 			GO_BACKWARD();
 			status = BACKWARD_;
+			if(turn>=10) turn = 0;
 		}
 	}
 	else if(serialSelectedCommand == SERIAL_STOP){
 		if(status != STOP_){
 			STOP();
 			status = STOP_;
+			if(turn>=10) turn = 0;
 		}
 	}
 	else if(serialSelectedCommand == SERIAL_LEFT){
 		if(status != LEFT_){
 			TURN_LEFT();
 			status = LEFT_;
+			if(turn>=10) turn = 0;
 		}
 	}
 	else if(serialSelectedCommand == SERIAL_RIGHT){
 		if(status != RIGHT_){
 			TURN_RIGHT();
 			status = RIGHT_;
+			if(turn>=10) turn = 0;
 		}
 	}
 	
 	if(ADC_New_Data_Available == 1){
-		if(ADC_GetLastValue() < 0x600){			
+		uint32_t* adc = ADC_GetLastValue();
+		if(adc[2] < 0x600 || adc[3] < 0x600){			
 			if(status != STOP_){
 				STOP();
 				lastStatus = status;
@@ -116,13 +127,19 @@ void updateTest() {
 				status = BACKWARD_;
 			}
 		}
+		change_velocity(velocity_Calculator(adc[4]));
+	}
+	if(turn >= 10){
+		STOP();
+		status = STOP_;
+		serialSelectedCommand = SERIAL_ELSE;
 	}
 	
 }
 
 void updateAuto() {
 	if(ultrasonicSensorNewDataAvailable == 1){
-		ultrasonicSensorDistance = (ultrasonicSensorRisingCaptureTime - ultrasonicSensorFallingCaptureTime) / 58;
+		ultrasonicSensorDistance = (ultrasonicSensorFallingCaptureTime - ultrasonicSensorRisingCaptureTime) / 58;
 		if(ultrasonicSensorDistance < 15){
 			TURN_LEFT();
 		}
@@ -139,6 +156,7 @@ int main() {
     init();
  
     while(1) {
+			HM10_ReadCommand();
 			if(selectedMode == MODE_TEST){
 				updateTest();
 			}

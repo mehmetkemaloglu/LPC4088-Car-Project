@@ -1,7 +1,10 @@
 #include "HM10.h"
+#include "ADC.h"
+#include "Ultrasonic.h"
 
 uint8_t HM10CurrentBufferIndex = 0;
 uint8_t HM10NewDataAvailable = 0;
+uint8_t HM10EndOfLine = 0;
 
 char HM10Buffer[HM10BufferSize];
 
@@ -32,7 +35,7 @@ void HM10_Init() {
 							| 0 << 4;
 	
 	//Enable the Receive Data Available Interrupt.
-	HM10_UART->IER |= (1<< 0 | 1<< 1);
+	HM10_UART->IER |= ( 1<< 0);
 	
 	//Enable UART3_IRQn Interrupt.
 	NVIC_EnableIRQ(UART3_IRQn);
@@ -41,11 +44,10 @@ void HM10_Init() {
 	
 	//HM10_Write("AT+RESET\r\n");
 	
-	HM10_Write("TESTING");
+	HM10_Write("TESTING\r\n");
 	
-	NVIC_SetPriority(UART3_IRQn, 7);
-
-	
+	NVIC_SetPriority(UART3_IRQn, 6);
+ NVIC_ClearPendingIRQ(UART3_IRQn);
 }
 
 void HM10_SendCommand(char* command) {
@@ -74,48 +76,53 @@ void HM10_Write(char* data) {
 	while(*data > 0)  {
 		HM10_WriteData(*data++);
 	}
-	HM10_WriteData(13);
-	HM10_WriteData(10);
 }
 
 void UART3_IRQHandler() {
 	char data;
 	data = HM10_ReadData();
 	HM10NewDataAvailable = 1;
-	if(data == 13){
-		HM10_ReadCommand();
-	}
-	else if(data != 10){
-		HM10Buffer[HM10CurrentBufferIndex] = data;
-		HM10CurrentBufferIndex++;
-	}
-	else{
-		HM10_ClearBuffer();
-	}
+	HM10Buffer[HM10CurrentBufferIndex] = data;
+	HM10CurrentBufferIndex++;
+	HM10Buffer[HM10CurrentBufferIndex] = '\0';
+	//HM10_ReadCommand();
 		
 }
 
 
 void HM10_ReadCommand(){
 	if(HM10NewDataAvailable == 1){
-		HM10NewDataAvailable = 0;
+		
 		Serial_DetectCommand(HM10Buffer);
+		
+		//HM10EndOfLine = 0;
+		
 		// auto ve status kontrol
 		if(serialSelectedCommand != SERIAL_ELSE){
 			HM10_Write(HM10Buffer);
+			HM10NewDataAvailable = 0;
+			HM10_ClearBuffer();
 		}
-		HM10_ClearBuffer();
 				
 		if(serialSelectedCommand == SERIAL_AUTO){
 			selectedMode = MODE_AUTO;
-			HM10_Write("AUTONOMOUS");
+			HM10_Write("AUTONOMOUS\r\n");
 		}
 		else if(serialSelectedCommand == SERIAL_TEST){
 			selectedMode = MODE_TEST;
-			HM10_Write("TESTING");
+			HM10_Write("TESTING\r\n");
 		}
 		else if(serialSelectedCommand == SERIAL_STATUS){
-			HM10_Write("STATUS");
+			char status[1024];
+			char* op_mode;
+			if(selectedMode == MODE_AUTO) {
+				op_mode = "AUTO";
+			} else {
+				op_mode = "TEST";
+			}
+			uint32_t ultrasonicSensorDistance = (ultrasonicSensorFallingCaptureTime - ultrasonicSensorRisingCaptureTime) / 58;
+			sprintf(status, "%s%d%s%d%s%d%s%s%s", "{\"distance\":", ultrasonicSensorDistance,",\"light_level_left\":", ADC_Last_Value[2]/4, ",\"light_level_right\":", ADC_Last_Value[3]/4, ",\"op_mode\":\"", op_mode, "\"}\r\n");
+			HM10_Write(status);
 		}
 	}
 }

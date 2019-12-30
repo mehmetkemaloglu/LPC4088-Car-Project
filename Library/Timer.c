@@ -22,7 +22,7 @@ void Timer_Init() {
 	
 	//Configure MR1 as ADC will start every 100 milliseconds (Do not forget you configured ADC when rising edge occurs on TIMER 0 MATCH 1) 
 	//?? 
-	TIMER0->MR1 = 600000;
+	TIMER0->MR1 = 60000;
 	
 	TIMER0->TCR &= ~(1 << 1);
 	

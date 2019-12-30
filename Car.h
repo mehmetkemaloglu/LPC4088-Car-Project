@@ -12,6 +12,8 @@ typedef enum {
 	BACKWARD_ = 4
 } Car_Direction;
 
+extern uint32_t velocity;
+
 void Car_Init();
 
 void GO_FORWARD();
@@ -26,5 +28,7 @@ void TURN_LEFT_MOTOR();
 void TURN_RIGHT_MOTOR();
 void STOP_MOTOR();
 
+uint32_t velocity_Calculator(uint32_t adc);
+void change_velocity(uint32_t new_velocity);
 
 #endif

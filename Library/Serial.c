@@ -128,35 +128,35 @@ void Serial_ReadCommand(){
 	}
 }
 
-void Serial_DetectCommand(const char * chars){
-	if(strcmp(chars, "START") == 0){
+void Serial_DetectCommand(char * chars){
+	if(strcmp(chars, "START\r\n") == 0){
 		serialSelectedCommand = SERIAL_START;
 	}
-	else if(strcmp(chars, "FINISH") == 0){
+	else if(strcmp(chars, "FINISH\r\n") == 0){
 		serialSelectedCommand = SERIAL_FINISH;
 	}
-	else if(strcmp(chars, "FORWARD") == 0){
+	else if(strcmp(chars, "FORWARD\r\n") == 0){
 		serialSelectedCommand = SERIAL_FORWARD;
 	}
-	else if(strcmp(chars, "LEFT") == 0){
+	else if(strcmp(chars, "LEFT\r\n") == 0){
 		serialSelectedCommand = SERIAL_LEFT;
 	}
-	else if(strcmp(chars, "RIGHT") == 0){
+	else if(strcmp(chars, "RIGHT\r\n") == 0){
 		serialSelectedCommand = SERIAL_RIGHT;
 	}
-	else if(strcmp(chars, "STOP") == 0){
+	else if(strcmp(chars, "STOP\r\n") == 0){
 		serialSelectedCommand = SERIAL_STOP;
 	}
-	else if(strcmp(chars, "STATUS") == 0){
+	else if(strcmp(chars, "STATUS\r\n") == 0){
 		serialSelectedCommand = SERIAL_STATUS;
 	}
-	else if(strcmp(chars, "AUTO") == 0){
+	else if(strcmp(chars, "AUTO\r\n") == 0){
 		serialSelectedCommand = SERIAL_AUTO;
 	}
-	else if(strcmp(chars, "BACK") == 0){
+	else if(strcmp(chars, "BACK\r\n") == 0){
 		serialSelectedCommand = SERIAL_BACK;
 	}
-	else if(strcmp(chars, "TEST") == 0){
+	else if(strcmp(chars, "TEST\r\n") == 0){
 		serialSelectedCommand = SERIAL_TEST;
 	}
 	else{

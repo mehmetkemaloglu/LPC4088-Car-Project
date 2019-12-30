@@ -21,6 +21,7 @@
 
 extern uint8_t HM10CurrentBufferIndex;
 extern uint8_t HM10NewDataAvailable;
+extern uint8_t HM10EndOfLine;
 
 extern char HM10Buffer[HM10BufferSize];
 

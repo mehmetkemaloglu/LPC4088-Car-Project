@@ -91,7 +91,7 @@ void Serial_Init(void);
 char Serial_ReadData(void);
 void Serial_WriteData(char data);
 void Serial_ReadCommand();
-void Serial_DetectCommand(const char * chars);
+void Serial_DetectCommand(char * chars);
 void write_Characters(char * character);
 void write_Status();
 

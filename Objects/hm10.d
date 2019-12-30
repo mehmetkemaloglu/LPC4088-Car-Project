@@ -12,3 +12,7 @@
 .\objects\hm10.o: Library\SystemStructures.h
 .\objects\hm10.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 .\objects\hm10.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+.\objects\hm10.o: Library\ADC.h
+.\objects\hm10.o: Library\Ultrasonic.h
+.\objects\hm10.o: Library\GPIO.h
+.\objects\hm10.o: Library\Timer.h
