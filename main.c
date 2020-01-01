@@ -11,8 +11,17 @@
 #include "Library/Serial.h"
 #include "Library/HM10.h"
 #include "Library/External.h"
+#include "stdlib.h"
+
 uint32_t status;
 uint32_t lastStatus;
+uint32_t auto_status;
+uint32_t lastDistance;
+uint32_t lastTurn;
+uint8_t isAuto = 0;
+uint32_t isFixStart = 0;
+uint32_t isTurning = 0;
+uint32_t isHardTurning = 0;
 
 
 void init() {
@@ -41,9 +50,11 @@ void init() {
 	//Serial_Init();
 	
 	//
-	serialSelectedCommand = SERIAL_TEST;
+	serialSelectedCommand = SERIAL_AUTO;
 	
-	selectedMode = MODE_TEST;
+	selectedMode =MODE_AUTO;
+	
+	auto_status = MOVE_;
 	
 	//External_Init();
 	
@@ -59,6 +70,13 @@ void init() {
 
 //void PWM0_IRQHandler() ;
 	//Clear the interrupt.
+
+void autoInit() {
+	isAuto = 1;
+	turn = 0;
+	status = STOP_;
+	STOP();
+}
 	
 
 void updateTest() {
@@ -141,17 +159,157 @@ void updateTest() {
 }
 
 void updateAuto() {
+	if(!isAuto) {
+		autoInit();
+	}
 	if(ultrasonicSensorNewDataAvailable == 1){
 		ultrasonicSensorDistance = (ultrasonicSensorFallingCaptureTime - ultrasonicSensorRisingCaptureTime) / 58;
-		if(ultrasonicSensorDistance < 15){
-			TURN_LEFT();
-		}
-		else if(ultrasonicSensorDistance > 35){
-			TURN_RIGHT();
-		}
 		ultrasonicSensorNewDataAvailable = 0;
-	}else{
-		GO_FORWARD();
+	}
+	
+	 if(serialSelectedCommand == SERIAL_START){
+		 if(ultrasonicSensorDistance > 400){
+			 return;
+		 }
+		if( ultrasonicSensorDistance < 15 && !isTurning ) {
+			if(status != RIGHT_){
+						TURN_RIGHT();
+						status = RIGHT_;
+						turn = 0;
+						isHardTurning = 1;
+			}
+			if(turn >= 1){
+				turn = 0;
+				auto_status = MOVE_;
+				status= FORWARD_;
+				GO_FORWARD();
+				isHardTurning = 0;
+			}
+		}
+		else if(ultrasonicSensorDistance > 35 && !isTurning ) {
+			if(status != LEFT_){
+						TURN_LEFT();
+						status = LEFT_;
+						turn = 0;
+						isHardTurning = 1;
+			}
+			if(turn >= 1){
+				turn = 0;
+				auto_status = MOVE_;
+				status= FORWARD_;
+				GO_FORWARD();
+				isHardTurning = 0;
+			}
+		}	
+		else if (!isHardTurning ) { 
+			if(auto_status == MOVE_){
+				if(status != FORWARD_){
+					lastDistance = ultrasonicSensorDistance;
+					GO_FORWARD();
+					status = FORWARD_;
+				}
+				if(turn >= 1) { 
+					auto_status = FIX_;
+					isFixStart = 1;
+				}
+			}
+			else{
+				int32_t diff;
+				if(isFixStart) {
+					diff = ultrasonicSensorDistance - lastDistance;
+					isFixStart = 0;
+				}
+				
+				if(abs(diff) < 3) {
+					if(status != FORWARD_){
+						GO_FORWARD();
+						status = FORWARD_;
+					}
+				} else if(abs(diff) < 5) {
+					if(diff > 0) {
+						if(status != LEFT_){
+							TURN_LEFT();
+							status = LEFT_;
+							turn = 0;
+							isTurning = 1;
+						}
+						if(turn >= 3){
+							turn = 0;
+							auto_status = MOVE_;
+							isTurning = 0;
+						}
+					} else {
+						if(status != RIGHT_){
+							TURN_RIGHT();
+							status = RIGHT_;
+							turn = 0;
+							isTurning = 1;
+						}
+						if(turn >= 3){
+							turn = 0;
+							auto_status = MOVE_;
+							isTurning = 0;
+						}
+					}
+				} else if(abs(diff) > 15) {
+					if(diff > 0) {
+						if(status != LEFT_){
+							TURN_LEFT();
+							status = LEFT_;
+							turn = 0;
+							isTurning = 1;
+						}
+						if(turn >= 6){
+							turn = 0;
+							auto_status = MOVE_;
+							isTurning = 0;
+						}
+					} else {
+						if(status != RIGHT_){
+							TURN_RIGHT();
+							status = RIGHT_;
+							turn = 0;
+							isTurning = 1;
+						}
+						if(turn >= 6){
+							turn = 0;
+							auto_status = MOVE_;
+							isTurning = 0;
+						}
+					}
+				}
+			}
+		}
+	}
+	
+	if(ADC_New_Data_Available == 1){
+		uint32_t* adc = ADC_GetLastValue();
+		if(adc[2] < 0x600 || adc[3] < 0x600){			
+			if(status != STOP_){
+				STOP();
+				lastStatus = status;
+				status = STOP_;
+			}
+		}
+		else if(status == STOP_){
+			if(lastStatus == FORWARD_){
+				GO_FORWARD();
+				status = FORWARD_;
+			}
+			else if(lastStatus == LEFT_){
+				TURN_LEFT();
+				status = LEFT_;
+			}
+			else if(lastStatus == RIGHT_){
+				TURN_RIGHT();
+				status = RIGHT_;
+			}
+			else if(lastStatus == BACKWARD_){
+				GO_BACKWARD();
+				status = BACKWARD_;
+			}
+		}
+		//change_velocity(velocity_Calculator(adc[4]));
 	}
 }
 
@@ -161,6 +319,7 @@ int main() {
     while(1) {
 			HM10_ReadCommand();
 			if(selectedMode == MODE_TEST){
+				isAuto = 0;
 				updateTest();
 			}
 			else if(selectedMode == MODE_AUTO){

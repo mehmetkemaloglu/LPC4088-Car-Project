@@ -4,6 +4,9 @@ Component: ARM Compiler 5.06 update 6 (build 750) Tool: armlink [4d35ed]
 
 Section Cross References
 
+    main.o(i.autoInit) refers to car.o(i.STOP) for STOP
+    main.o(i.autoInit) refers to main.o(.data) for isAuto
+    main.o(i.autoInit) refers to external.o(.data) for turn
     main.o(i.init) refers to pwm.o(i.PWM0_Init) for PWM0_Init
     main.o(i.init) refers to pwm.o(i.PWM1_Init) for PWM1_Init
     main.o(i.init) refers to gpio.o(i.GPIO_Motor_Init) for GPIO_Motor_Init
@@ -24,10 +27,19 @@ Section Cross References
     main.o(i.main) refers to main.o(i.updateTest) for updateTest
     main.o(i.main) refers to main.o(i.updateAuto) for updateAuto
     main.o(i.main) refers to serial.o(.data) for selectedMode
-    main.o(i.updateAuto) refers to car.o(i.TURN_LEFT) for TURN_LEFT
+    main.o(i.main) refers to main.o(.data) for isAuto
+    main.o(i.updateAuto) refers to main.o(i.autoInit) for autoInit
     main.o(i.updateAuto) refers to car.o(i.TURN_RIGHT) for TURN_RIGHT
     main.o(i.updateAuto) refers to car.o(i.GO_FORWARD) for GO_FORWARD
+    main.o(i.updateAuto) refers to car.o(i.TURN_LEFT) for TURN_LEFT
+    main.o(i.updateAuto) refers to adc.o(i.ADC_GetLastValue) for ADC_GetLastValue
+    main.o(i.updateAuto) refers to car.o(i.STOP) for STOP
+    main.o(i.updateAuto) refers to car.o(i.GO_BACKWARD) for GO_BACKWARD
+    main.o(i.updateAuto) refers to main.o(.data) for isAuto
     main.o(i.updateAuto) refers to ultrasonic.o(.data) for ultrasonicSensorNewDataAvailable
+    main.o(i.updateAuto) refers to serial.o(.data) for serialSelectedCommand
+    main.o(i.updateAuto) refers to external.o(.data) for turn
+    main.o(i.updateAuto) refers to adc.o(.data) for ADC_New_Data_Available
     main.o(i.updateTest) refers to car.o(i.GO_FORWARD) for GO_FORWARD
     main.o(i.updateTest) refers to car.o(i.GO_BACKWARD) for GO_BACKWARD
     main.o(i.updateTest) refers to car.o(i.STOP) for STOP
@@ -513,33 +525,33 @@ Image Symbol Table
     RESET                                    0x00000000   Section      228  startup_lpc407x_8x_177x_8x.o(RESET)
     ../clib/microlib/division.c              0x00000000   Number         0  uidiv.o ABSOLUTE
     ../clib/microlib/division.c              0x00000000   Number         0  uldiv.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry10a.o ABSOLUTE
     ../clib/microlib/init/entry.s            0x00000000   Number         0  entry7a.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry11a.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry8a.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry10b.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry5.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry9a.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry2.o ABSOLUTE
     ../clib/microlib/init/entry.s            0x00000000   Number         0  entry7b.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry11b.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry2.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry8a.o ABSOLUTE
     ../clib/microlib/init/entry.s            0x00000000   Number         0  entry.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry5.o ABSOLUTE
     ../clib/microlib/init/entry.s            0x00000000   Number         0  entry8b.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry9a.o ABSOLUTE
     ../clib/microlib/init/entry.s            0x00000000   Number         0  entry9b.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry10a.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry10b.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry11a.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry11b.o ABSOLUTE
     ../clib/microlib/longlong.c              0x00000000   Number         0  llsshr.o ABSOLUTE
-    ../clib/microlib/longlong.c              0x00000000   Number         0  llshl.o ABSOLUTE
     ../clib/microlib/longlong.c              0x00000000   Number         0  llushr.o ABSOLUTE
-    ../clib/microlib/printf/printf.c         0x00000000   Number         0  printfa.o ABSOLUTE
-    ../clib/microlib/printf/printf.c         0x00000000   Number         0  printf6.o ABSOLUTE
-    ../clib/microlib/printf/printf.c         0x00000000   Number         0  printf5.o ABSOLUTE
-    ../clib/microlib/printf/printf.c         0x00000000   Number         0  printf4.o ABSOLUTE
-    ../clib/microlib/printf/printf.c         0x00000000   Number         0  printf3.o ABSOLUTE
-    ../clib/microlib/printf/printf.c         0x00000000   Number         0  printf1.o ABSOLUTE
+    ../clib/microlib/longlong.c              0x00000000   Number         0  llshl.o ABSOLUTE
+    ../clib/microlib/printf/printf.c         0x00000000   Number         0  printf2.o ABSOLUTE
     ../clib/microlib/printf/printf.c         0x00000000   Number         0  printf0.o ABSOLUTE
     ../clib/microlib/printf/printf.c         0x00000000   Number         0  printfb.o ABSOLUTE
-    ../clib/microlib/printf/printf.c         0x00000000   Number         0  printf2.o ABSOLUTE
-    ../clib/microlib/printf/printf.c         0x00000000   Number         0  printf8.o ABSOLUTE
+    ../clib/microlib/printf/printf.c         0x00000000   Number         0  printf3.o ABSOLUTE
+    ../clib/microlib/printf/printf.c         0x00000000   Number         0  printf4.o ABSOLUTE
+    ../clib/microlib/printf/printf.c         0x00000000   Number         0  printf5.o ABSOLUTE
+    ../clib/microlib/printf/printf.c         0x00000000   Number         0  printf6.o ABSOLUTE
     ../clib/microlib/printf/printf.c         0x00000000   Number         0  printf7.o ABSOLUTE
+    ../clib/microlib/printf/printf.c         0x00000000   Number         0  printfa.o ABSOLUTE
+    ../clib/microlib/printf/printf.c         0x00000000   Number         0  printf8.o ABSOLUTE
+    ../clib/microlib/printf/printf.c         0x00000000   Number         0  printf1.o ABSOLUTE
     ../clib/microlib/printf/stubs.s          0x00000000   Number         0  stubs.o ABSOLUTE
     ../clib/microlib/stdio/fputc.c           0x00000000   Number         0  fputc.o ABSOLUTE
     ../clib/microlib/stdio/semi.s            0x00000000   Number         0  semi.o ABSOLUTE
@@ -658,25 +670,26 @@ Image Symbol Table
     _printf_core                             0x000013e5   Thumb Code   436  printf3.o(i._printf_core)
     i._sputc                                 0x0000159c   Section        0  printf3.o(i._sputc)
     _sputc                                   0x0000159d   Thumb Code    10  printf3.o(i._sputc)
-    i.change_velocity                        0x000015a8   Section        0  car.o(i.change_velocity)
-    i.enableADC                              0x000015dc   Section        0  adc.o(i.enableADC)
-    i.fpu_init                               0x000015f8   Section        0  system_lpc407x_8x_177x_8x.o(i.fpu_init)
-    i.init                                   0x00001648   Section        0  main.o(i.init)
-    i.main                                   0x0000169c   Section        0  main.o(i.main)
-    i.updateAuto                             0x000016c4   Section        0  main.o(i.updateAuto)
-    i.updateTest                             0x0000171c   Section        0  main.o(i.updateTest)
-    i.velocity_Calculator                    0x0000189c   Section        0  car.o(i.velocity_Calculator)
-    .data                                    0x10000000   Section        8  main.o(.data)
-    .data                                    0x10000008   Section        4  external.o(.data)
-    .data                                    0x1000000c   Section        4  car.o(.data)
-    .data                                    0x10000010   Section        6  adc.o(.data)
-    .data                                    0x10000018   Section       19  ultrasonic.o(.data)
-    .data                                    0x1000002b   Section        3  hm10.o(.data)
-    .data                                    0x10000030   Section       24  serial.o(.data)
-    .data                                    0x10000048   Section       16  system_lpc407x_8x_177x_8x.o(.data)
-    .bss                                     0x10000058   Section       20  adc.o(.bss)
-    .bss                                     0x1000006c   Section      256  hm10.o(.bss)
-    STACK                                    0x10000170   Section     1024  startup_lpc407x_8x_177x_8x.o(STACK)
+    i.autoInit                               0x000015a8   Section        0  main.o(i.autoInit)
+    i.change_velocity                        0x000015cc   Section        0  car.o(i.change_velocity)
+    i.enableADC                              0x00001600   Section        0  adc.o(i.enableADC)
+    i.fpu_init                               0x0000161c   Section        0  system_lpc407x_8x_177x_8x.o(i.fpu_init)
+    i.init                                   0x0000166c   Section        0  main.o(i.init)
+    i.main                                   0x000016cc   Section        0  main.o(i.main)
+    i.updateAuto                             0x00001700   Section        0  main.o(i.updateAuto)
+    i.updateTest                             0x00001a20   Section        0  main.o(i.updateTest)
+    i.velocity_Calculator                    0x00001ba0   Section        0  car.o(i.velocity_Calculator)
+    .data                                    0x10000000   Section       36  main.o(.data)
+    .data                                    0x10000024   Section        4  external.o(.data)
+    .data                                    0x10000028   Section        4  car.o(.data)
+    .data                                    0x1000002c   Section        6  adc.o(.data)
+    .data                                    0x10000034   Section       19  ultrasonic.o(.data)
+    .data                                    0x10000047   Section        3  hm10.o(.data)
+    .data                                    0x1000004c   Section       24  serial.o(.data)
+    .data                                    0x10000064   Section       16  system_lpc407x_8x_177x_8x.o(.data)
+    .bss                                     0x10000074   Section       20  adc.o(.bss)
+    .bss                                     0x10000088   Section      256  hm10.o(.bss)
+    STACK                                    0x10000188   Section     1024  startup_lpc407x_8x_177x_8x.o(STACK)
 
     Global Symbols
 
@@ -844,47 +857,55 @@ Image Symbol Table
     __2sprintf                               0x00001385   Thumb Code     0  printf3.o(i.__0sprintf$3)
     __scatterload_copy                       0x000013c7   Thumb Code    14  handlers.o(i.__scatterload_copy)
     __scatterload_zeroinit                   0x000013d5   Thumb Code    14  handlers.o(i.__scatterload_zeroinit)
-    change_velocity                          0x000015a9   Thumb Code    48  car.o(i.change_velocity)
-    enableADC                                0x000015dd   Thumb Code    22  adc.o(i.enableADC)
-    fpu_init                                 0x000015f9   Thumb Code    62  system_lpc407x_8x_177x_8x.o(i.fpu_init)
-    init                                     0x00001649   Thumb Code    72  main.o(i.init)
-    main                                     0x0000169d   Thumb Code    36  main.o(i.main)
-    updateAuto                               0x000016c5   Thumb Code    70  main.o(i.updateAuto)
-    updateTest                               0x0000171d   Thumb Code   362  main.o(i.updateTest)
-    velocity_Calculator                      0x0000189d   Thumb Code    32  car.o(i.velocity_Calculator)
-    Region$$Table$$Base                      0x000018bc   Number         0  anon$$obj.o(Region$$Table)
-    Region$$Table$$Limit                     0x000018dc   Number         0  anon$$obj.o(Region$$Table)
+    autoInit                                 0x000015a9   Thumb Code    24  main.o(i.autoInit)
+    change_velocity                          0x000015cd   Thumb Code    48  car.o(i.change_velocity)
+    enableADC                                0x00001601   Thumb Code    22  adc.o(i.enableADC)
+    fpu_init                                 0x0000161d   Thumb Code    62  system_lpc407x_8x_177x_8x.o(i.fpu_init)
+    init                                     0x0000166d   Thumb Code    80  main.o(i.init)
+    main                                     0x000016cd   Thumb Code    42  main.o(i.main)
+    updateAuto                               0x00001701   Thumb Code   740  main.o(i.updateAuto)
+    updateTest                               0x00001a21   Thumb Code   362  main.o(i.updateTest)
+    velocity_Calculator                      0x00001ba1   Thumb Code    32  car.o(i.velocity_Calculator)
+    Region$$Table$$Base                      0x00001bc0   Number         0  anon$$obj.o(Region$$Table)
+    Region$$Table$$Limit                     0x00001be0   Number         0  anon$$obj.o(Region$$Table)
     status                                   0x10000000   Data           4  main.o(.data)
     lastStatus                               0x10000004   Data           4  main.o(.data)
-    turn                                     0x10000008   Data           4  external.o(.data)
-    velocity                                 0x1000000c   Data           4  car.o(.data)
-    ADC_Last                                 0x10000010   Data           4  adc.o(.data)
-    ADC_New_Data_Available                   0x10000014   Data           1  adc.o(.data)
-    selectedADC                              0x10000015   Data           1  adc.o(.data)
-    ultrasonicSensorRisingCaptureTime        0x10000018   Data           4  ultrasonic.o(.data)
-    ultrasonicSensorFallingCaptureTime       0x1000001c   Data           4  ultrasonic.o(.data)
-    ultrasonicSensorDuration                 0x10000020   Data           4  ultrasonic.o(.data)
-    ultrasonicSensorDistance                 0x10000024   Data           4  ultrasonic.o(.data)
-    ultrasonicSensorNewDataAvailable         0x10000028   Data           1  ultrasonic.o(.data)
-    ultrasonicSensorTriggerStart             0x10000029   Data           1  ultrasonic.o(.data)
-    ultrasonicSensorCaptureRisingEdge        0x1000002a   Data           1  ultrasonic.o(.data)
-    HM10CurrentBufferIndex                   0x1000002b   Data           1  hm10.o(.data)
-    HM10NewDataAvailable                     0x1000002c   Data           1  hm10.o(.data)
-    HM10EndOfLine                            0x1000002d   Data           1  hm10.o(.data)
-    serialReceivedCharacter                  0x10000030   Data           1  serial.o(.data)
-    serialNewDataAvailable                   0x10000031   Data           1  serial.o(.data)
-    serialTransmitData                       0x10000034   Data           4  serial.o(.data)
-    serialTransmitCompleted                  0x10000038   Data           1  serial.o(.data)
-    size                                     0x1000003c   Data           4  serial.o(.data)
-    serialSelectedCommand                    0x10000040   Data           4  serial.o(.data)
-    selectedMode                             0x10000044   Data           4  serial.o(.data)
-    SystemCoreClock                          0x10000048   Data           4  system_lpc407x_8x_177x_8x.o(.data)
-    PeripheralClock                          0x1000004c   Data           4  system_lpc407x_8x_177x_8x.o(.data)
-    EMCClock                                 0x10000050   Data           4  system_lpc407x_8x_177x_8x.o(.data)
-    USBClock                                 0x10000054   Data           4  system_lpc407x_8x_177x_8x.o(.data)
-    ADC_Last_Value                           0x10000058   Data          20  adc.o(.bss)
-    HM10Buffer                               0x1000006c   Data         256  hm10.o(.bss)
-    __initial_sp                             0x10000570   Data           0  startup_lpc407x_8x_177x_8x.o(STACK)
+    auto_status                              0x10000008   Data           4  main.o(.data)
+    lastDistance                             0x1000000c   Data           4  main.o(.data)
+    lastTurn                                 0x10000010   Data           4  main.o(.data)
+    isAuto                                   0x10000014   Data           1  main.o(.data)
+    isFixStart                               0x10000018   Data           4  main.o(.data)
+    isTurning                                0x1000001c   Data           4  main.o(.data)
+    isHardTurning                            0x10000020   Data           4  main.o(.data)
+    turn                                     0x10000024   Data           4  external.o(.data)
+    velocity                                 0x10000028   Data           4  car.o(.data)
+    ADC_Last                                 0x1000002c   Data           4  adc.o(.data)
+    ADC_New_Data_Available                   0x10000030   Data           1  adc.o(.data)
+    selectedADC                              0x10000031   Data           1  adc.o(.data)
+    ultrasonicSensorRisingCaptureTime        0x10000034   Data           4  ultrasonic.o(.data)
+    ultrasonicSensorFallingCaptureTime       0x10000038   Data           4  ultrasonic.o(.data)
+    ultrasonicSensorDuration                 0x1000003c   Data           4  ultrasonic.o(.data)
+    ultrasonicSensorDistance                 0x10000040   Data           4  ultrasonic.o(.data)
+    ultrasonicSensorNewDataAvailable         0x10000044   Data           1  ultrasonic.o(.data)
+    ultrasonicSensorTriggerStart             0x10000045   Data           1  ultrasonic.o(.data)
+    ultrasonicSensorCaptureRisingEdge        0x10000046   Data           1  ultrasonic.o(.data)
+    HM10CurrentBufferIndex                   0x10000047   Data           1  hm10.o(.data)
+    HM10NewDataAvailable                     0x10000048   Data           1  hm10.o(.data)
+    HM10EndOfLine                            0x10000049   Data           1  hm10.o(.data)
+    serialReceivedCharacter                  0x1000004c   Data           1  serial.o(.data)
+    serialNewDataAvailable                   0x1000004d   Data           1  serial.o(.data)
+    serialTransmitData                       0x10000050   Data           4  serial.o(.data)
+    serialTransmitCompleted                  0x10000054   Data           1  serial.o(.data)
+    size                                     0x10000058   Data           4  serial.o(.data)
+    serialSelectedCommand                    0x1000005c   Data           4  serial.o(.data)
+    selectedMode                             0x10000060   Data           4  serial.o(.data)
+    SystemCoreClock                          0x10000064   Data           4  system_lpc407x_8x_177x_8x.o(.data)
+    PeripheralClock                          0x10000068   Data           4  system_lpc407x_8x_177x_8x.o(.data)
+    EMCClock                                 0x1000006c   Data           4  system_lpc407x_8x_177x_8x.o(.data)
+    USBClock                                 0x10000070   Data           4  system_lpc407x_8x_177x_8x.o(.data)
+    ADC_Last_Value                           0x10000074   Data          20  adc.o(.bss)
+    HM10Buffer                               0x10000088   Data         256  hm10.o(.bss)
+    __initial_sp                             0x10000588   Data           0  startup_lpc407x_8x_177x_8x.o(STACK)
 
 
 
@@ -894,126 +915,126 @@ Memory Map of the image
 
   Image Entry point : 0x000000f9
 
-  Load Region LR_1 (Base: 0x00000000, Size: 0x00001934, Max: 0xffffffff, ABSOLUTE)
+  Load Region LR_1 (Base: 0x00000000, Size: 0x00001c54, Max: 0xffffffff, ABSOLUTE)
 
-    Execution Region ER_RO (Exec base: 0x00000000, Load base: 0x00000000, Size: 0x000018dc, Max: 0xffffffff, ABSOLUTE)
+    Execution Region ER_RO (Exec base: 0x00000000, Load base: 0x00000000, Size: 0x00001be0, Max: 0xffffffff, ABSOLUTE)
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
-    0x00000000   0x00000000   0x000000e4   Data   RO          878    RESET               startup_lpc407x_8x_177x_8x.o
-    0x000000e4   0x000000e4   0x00000000   Code   RO          928  * .ARM.Collect$$$$00000000  mc_w.l(entry.o)
-    0x000000e4   0x000000e4   0x00000004   Code   RO         1194    .ARM.Collect$$$$00000001  mc_w.l(entry2.o)
-    0x000000e8   0x000000e8   0x00000004   Code   RO         1197    .ARM.Collect$$$$00000004  mc_w.l(entry5.o)
-    0x000000ec   0x000000ec   0x00000000   Code   RO         1199    .ARM.Collect$$$$00000008  mc_w.l(entry7b.o)
-    0x000000ec   0x000000ec   0x00000000   Code   RO         1201    .ARM.Collect$$$$0000000A  mc_w.l(entry8b.o)
-    0x000000ec   0x000000ec   0x00000008   Code   RO         1202    .ARM.Collect$$$$0000000B  mc_w.l(entry9a.o)
-    0x000000f4   0x000000f4   0x00000000   Code   RO         1204    .ARM.Collect$$$$0000000D  mc_w.l(entry10a.o)
-    0x000000f4   0x000000f4   0x00000000   Code   RO         1206    .ARM.Collect$$$$0000000F  mc_w.l(entry11a.o)
-    0x000000f4   0x000000f4   0x00000004   Code   RO         1195    .ARM.Collect$$$$00002712  mc_w.l(entry2.o)
-    0x000000f8   0x000000f8   0x00000024   Code   RO          880  * .text               startup_lpc407x_8x_177x_8x.o
-    0x0000011c   0x0000011c   0x0000001c   Code   RO          931    .text               mc_w.l(strcmp.o)
-    0x00000138   0x00000138   0x0000002c   Code   RO         1211    .text               mc_w.l(uidiv.o)
-    0x00000164   0x00000164   0x00000024   Code   RO         1226    .text               mc_w.l(init.o)
-    0x00000188   0x00000188   0x00000014   Code   RO          569    i.ADC_GetLastValue  adc.o
-    0x0000019c   0x0000019c   0x00000080   Code   RO          570    i.ADC_IRQHandler    adc.o
-    0x0000021c   0x0000021c   0x00000014   Code   RO          572    i.ADC_Start         adc.o
-    0x00000230   0x00000230   0x00000028   Code   RO          319    i.EINT0_IRQHandler  external.o
-    0x00000258   0x00000258   0x0000005c   Code   RO          320    i.External_Init     external.o
-    0x000002b4   0x000002b4   0x0000000c   Code   RO          470    i.GO_BACKWARD       car.o
-    0x000002c0   0x000002c0   0x0000002a   Code   RO          229    i.GO_BACKWARD_LED   pwm.o
-    0x000002ea   0x000002ea   0x0000000c   Code   RO          472    i.GO_FORWARD        car.o
-    0x000002f6   0x000002f6   0x00000002   Code   RO         1241    i.__scatterload_null  mc_w.l(handlers.o)
+    0x00000000   0x00000000   0x000000e4   Data   RO          887    RESET               startup_lpc407x_8x_177x_8x.o
+    0x000000e4   0x000000e4   0x00000000   Code   RO          937  * .ARM.Collect$$$$00000000  mc_w.l(entry.o)
+    0x000000e4   0x000000e4   0x00000004   Code   RO         1203    .ARM.Collect$$$$00000001  mc_w.l(entry2.o)
+    0x000000e8   0x000000e8   0x00000004   Code   RO         1206    .ARM.Collect$$$$00000004  mc_w.l(entry5.o)
+    0x000000ec   0x000000ec   0x00000000   Code   RO         1208    .ARM.Collect$$$$00000008  mc_w.l(entry7b.o)
+    0x000000ec   0x000000ec   0x00000000   Code   RO         1210    .ARM.Collect$$$$0000000A  mc_w.l(entry8b.o)
+    0x000000ec   0x000000ec   0x00000008   Code   RO         1211    .ARM.Collect$$$$0000000B  mc_w.l(entry9a.o)
+    0x000000f4   0x000000f4   0x00000000   Code   RO         1213    .ARM.Collect$$$$0000000D  mc_w.l(entry10a.o)
+    0x000000f4   0x000000f4   0x00000000   Code   RO         1215    .ARM.Collect$$$$0000000F  mc_w.l(entry11a.o)
+    0x000000f4   0x000000f4   0x00000004   Code   RO         1204    .ARM.Collect$$$$00002712  mc_w.l(entry2.o)
+    0x000000f8   0x000000f8   0x00000024   Code   RO          889  * .text               startup_lpc407x_8x_177x_8x.o
+    0x0000011c   0x0000011c   0x0000001c   Code   RO          940    .text               mc_w.l(strcmp.o)
+    0x00000138   0x00000138   0x0000002c   Code   RO         1220    .text               mc_w.l(uidiv.o)
+    0x00000164   0x00000164   0x00000024   Code   RO         1235    .text               mc_w.l(init.o)
+    0x00000188   0x00000188   0x00000014   Code   RO          578    i.ADC_GetLastValue  adc.o
+    0x0000019c   0x0000019c   0x00000080   Code   RO          579    i.ADC_IRQHandler    adc.o
+    0x0000021c   0x0000021c   0x00000014   Code   RO          581    i.ADC_Start         adc.o
+    0x00000230   0x00000230   0x00000028   Code   RO          328    i.EINT0_IRQHandler  external.o
+    0x00000258   0x00000258   0x0000005c   Code   RO          329    i.External_Init     external.o
+    0x000002b4   0x000002b4   0x0000000c   Code   RO          479    i.GO_BACKWARD       car.o
+    0x000002c0   0x000002c0   0x0000002a   Code   RO          238    i.GO_BACKWARD_LED   pwm.o
+    0x000002ea   0x000002ea   0x0000000c   Code   RO          481    i.GO_FORWARD        car.o
+    0x000002f6   0x000002f6   0x00000002   Code   RO         1250    i.__scatterload_null  mc_w.l(handlers.o)
     0x000002f8   0x000002f8   0x00000004   PAD
-    0x000002fc   0x000002fc   0x00000004   Code   RO          879    .ARM.__at_0x02FC    startup_lpc407x_8x_177x_8x.o
-    0x00000300   0x00000300   0x00000100   Code   RO          571    i.ADC_Init          adc.o
-    0x00000400   0x00000400   0x00000034   Code   RO          471    i.GO_BACKWARD_MOTOR  car.o
-    0x00000434   0x00000434   0x0000002a   Code   RO          230    i.GO_FORWARD_LED    pwm.o
+    0x000002fc   0x000002fc   0x00000004   Code   RO          888    .ARM.__at_0x02FC    startup_lpc407x_8x_177x_8x.o
+    0x00000300   0x00000300   0x00000100   Code   RO          580    i.ADC_Init          adc.o
+    0x00000400   0x00000400   0x00000034   Code   RO          480    i.GO_BACKWARD_MOTOR  car.o
+    0x00000434   0x00000434   0x0000002a   Code   RO          239    i.GO_FORWARD_LED    pwm.o
     0x0000045e   0x0000045e   0x00000002   PAD
-    0x00000460   0x00000460   0x00000034   Code   RO          473    i.GO_FORWARD_MOTOR  car.o
-    0x00000494   0x00000494   0x00000012   Code   RO          127    i.GPIO_DIR_Write    gpio.o
+    0x00000460   0x00000460   0x00000034   Code   RO          482    i.GO_FORWARD_MOTOR  car.o
+    0x00000494   0x00000494   0x00000012   Code   RO          136    i.GPIO_DIR_Write    gpio.o
     0x000004a6   0x000004a6   0x00000002   PAD
-    0x000004a8   0x000004a8   0x0000006c   Code   RO          128    i.GPIO_Motor_Init   gpio.o
-    0x00000514   0x00000514   0x00000012   Code   RO          130    i.GPIO_PIN_Write    gpio.o
+    0x000004a8   0x000004a8   0x0000006c   Code   RO          137    i.GPIO_Motor_Init   gpio.o
+    0x00000514   0x00000514   0x00000012   Code   RO          139    i.GPIO_PIN_Write    gpio.o
     0x00000526   0x00000526   0x00000002   PAD
-    0x00000528   0x00000528   0x00000028   Code   RO          724    i.HM10_ClearBuffer  hm10.o
-    0x00000550   0x00000550   0x000000e0   Code   RO          725    i.HM10_Init         hm10.o
-    0x00000630   0x00000630   0x00000170   Code   RO          726    i.HM10_ReadCommand  hm10.o
-    0x000007a0   0x000007a0   0x00000018   Code   RO          727    i.HM10_ReadData     hm10.o
-    0x000007b8   0x000007b8   0x00000016   Code   RO          729    i.HM10_Write        hm10.o
+    0x00000528   0x00000528   0x00000028   Code   RO          733    i.HM10_ClearBuffer  hm10.o
+    0x00000550   0x00000550   0x000000e0   Code   RO          734    i.HM10_Init         hm10.o
+    0x00000630   0x00000630   0x00000170   Code   RO          735    i.HM10_ReadCommand  hm10.o
+    0x000007a0   0x000007a0   0x00000018   Code   RO          736    i.HM10_ReadData     hm10.o
+    0x000007b8   0x000007b8   0x00000016   Code   RO          738    i.HM10_Write        hm10.o
     0x000007ce   0x000007ce   0x00000002   PAD
-    0x000007d0   0x000007d0   0x00000018   Code   RO          730    i.HM10_WriteData    hm10.o
-    0x000007e8   0x000007e8   0x00000020   Code   RO          231    i.PWM0_Cycle_Rate   pwm.o
-    0x00000808   0x00000808   0x000000cc   Code   RO          232    i.PWM0_Init         pwm.o
-    0x000008d4   0x000008d4   0x00000078   Code   RO          233    i.PWM0_Write        pwm.o
-    0x0000094c   0x0000094c   0x00000090   Code   RO          235    i.PWM1_Init         pwm.o
-    0x000009dc   0x000009dc   0x00000044   Code   RO          236    i.PWM1_Write        pwm.o
-    0x00000a20   0x00000a20   0x0000000c   Code   RO          474    i.STOP              car.o
-    0x00000a2c   0x00000a2c   0x0000002a   Code   RO          237    i.STOP_LED          pwm.o
+    0x000007d0   0x000007d0   0x00000018   Code   RO          739    i.HM10_WriteData    hm10.o
+    0x000007e8   0x000007e8   0x00000020   Code   RO          240    i.PWM0_Cycle_Rate   pwm.o
+    0x00000808   0x00000808   0x000000cc   Code   RO          241    i.PWM0_Init         pwm.o
+    0x000008d4   0x000008d4   0x00000078   Code   RO          242    i.PWM0_Write        pwm.o
+    0x0000094c   0x0000094c   0x00000090   Code   RO          244    i.PWM1_Init         pwm.o
+    0x000009dc   0x000009dc   0x00000044   Code   RO          245    i.PWM1_Write        pwm.o
+    0x00000a20   0x00000a20   0x0000000c   Code   RO          483    i.STOP              car.o
+    0x00000a2c   0x00000a2c   0x0000002a   Code   RO          246    i.STOP_LED          pwm.o
     0x00000a56   0x00000a56   0x00000002   PAD
-    0x00000a58   0x00000a58   0x00000034   Code   RO          475    i.STOP_MOTOR        car.o
-    0x00000a8c   0x00000a8c   0x00000120   Code   RO          809    i.Serial_DetectCommand  serial.o
-    0x00000bac   0x00000bac   0x0000000c   Code   RO          812    i.Serial_ReadData   serial.o
-    0x00000bb8   0x00000bb8   0x00000014   Code   RO          813    i.Serial_WriteData  serial.o
-    0x00000bcc   0x00000bcc   0x000002d4   Code   RO          889    i.SystemCoreClockUpdate  system_lpc407x_8x_177x_8x.o
-    0x00000ea0   0x00000ea0   0x000000ec   Code   RO          890    i.SystemInit        system_lpc407x_8x_177x_8x.o
-    0x00000f8c   0x00000f8c   0x0000004c   Code   RO          655    i.TIMER2_IRQHandler  ultrasonic.o
-    0x00000fd8   0x00000fd8   0x00000054   Code   RO          656    i.TIMER3_IRQHandler  ultrasonic.o
-    0x0000102c   0x0000102c   0x0000000c   Code   RO          476    i.TURN_LEFT         car.o
-    0x00001038   0x00001038   0x0000002c   Code   RO          238    i.TURN_LEFT_LED     pwm.o
-    0x00001064   0x00001064   0x00000034   Code   RO          477    i.TURN_LEFT_MOTOR   car.o
-    0x00001098   0x00001098   0x0000000c   Code   RO          478    i.TURN_RIGHT        car.o
-    0x000010a4   0x000010a4   0x0000002c   Code   RO          239    i.TURN_RIGHT_LED    pwm.o
-    0x000010d0   0x000010d0   0x00000034   Code   RO          479    i.TURN_RIGHT_MOTOR  car.o
-    0x00001104   0x00001104   0x00000088   Code   RO          628    i.Timer_Init        timer.o
-    0x0000118c   0x0000118c   0x00000060   Code   RO          814    i.UART0_IRQHandler  serial.o
-    0x000011ec   0x000011ec   0x00000038   Code   RO          731    i.UART3_IRQHandler  hm10.o
-    0x00001224   0x00001224   0x00000064   Code   RO          657    i.Ultrasonic_Capture_Timer_Init  ultrasonic.o
-    0x00001288   0x00001288   0x0000001c   Code   RO          658    i.Ultrasonic_Init   ultrasonic.o
-    0x000012a4   0x000012a4   0x00000040   Code   RO          659    i.Ultrasonic_Start_Trigger_Timer  ultrasonic.o
-    0x000012e4   0x000012e4   0x000000a0   Code   RO          660    i.Ultrasonic_Trigger_Timer_Init  ultrasonic.o
-    0x00001384   0x00001384   0x00000028   Code   RO         1024    i.__0sprintf$3      mc_w.l(printf3.o)
-    0x000013ac   0x000013ac   0x0000001a   Code   RO          661    i.__NVIC_EnableIRQ  ultrasonic.o
-    0x000013c6   0x000013c6   0x0000000e   Code   RO         1240    i.__scatterload_copy  mc_w.l(handlers.o)
-    0x000013d4   0x000013d4   0x0000000e   Code   RO         1242    i.__scatterload_zeroinit  mc_w.l(handlers.o)
+    0x00000a58   0x00000a58   0x00000034   Code   RO          484    i.STOP_MOTOR        car.o
+    0x00000a8c   0x00000a8c   0x00000120   Code   RO          818    i.Serial_DetectCommand  serial.o
+    0x00000bac   0x00000bac   0x0000000c   Code   RO          821    i.Serial_ReadData   serial.o
+    0x00000bb8   0x00000bb8   0x00000014   Code   RO          822    i.Serial_WriteData  serial.o
+    0x00000bcc   0x00000bcc   0x000002d4   Code   RO          898    i.SystemCoreClockUpdate  system_lpc407x_8x_177x_8x.o
+    0x00000ea0   0x00000ea0   0x000000ec   Code   RO          899    i.SystemInit        system_lpc407x_8x_177x_8x.o
+    0x00000f8c   0x00000f8c   0x0000004c   Code   RO          664    i.TIMER2_IRQHandler  ultrasonic.o
+    0x00000fd8   0x00000fd8   0x00000054   Code   RO          665    i.TIMER3_IRQHandler  ultrasonic.o
+    0x0000102c   0x0000102c   0x0000000c   Code   RO          485    i.TURN_LEFT         car.o
+    0x00001038   0x00001038   0x0000002c   Code   RO          247    i.TURN_LEFT_LED     pwm.o
+    0x00001064   0x00001064   0x00000034   Code   RO          486    i.TURN_LEFT_MOTOR   car.o
+    0x00001098   0x00001098   0x0000000c   Code   RO          487    i.TURN_RIGHT        car.o
+    0x000010a4   0x000010a4   0x0000002c   Code   RO          248    i.TURN_RIGHT_LED    pwm.o
+    0x000010d0   0x000010d0   0x00000034   Code   RO          488    i.TURN_RIGHT_MOTOR  car.o
+    0x00001104   0x00001104   0x00000088   Code   RO          637    i.Timer_Init        timer.o
+    0x0000118c   0x0000118c   0x00000060   Code   RO          823    i.UART0_IRQHandler  serial.o
+    0x000011ec   0x000011ec   0x00000038   Code   RO          740    i.UART3_IRQHandler  hm10.o
+    0x00001224   0x00001224   0x00000064   Code   RO          666    i.Ultrasonic_Capture_Timer_Init  ultrasonic.o
+    0x00001288   0x00001288   0x0000001c   Code   RO          667    i.Ultrasonic_Init   ultrasonic.o
+    0x000012a4   0x000012a4   0x00000040   Code   RO          668    i.Ultrasonic_Start_Trigger_Timer  ultrasonic.o
+    0x000012e4   0x000012e4   0x000000a0   Code   RO          669    i.Ultrasonic_Trigger_Timer_Init  ultrasonic.o
+    0x00001384   0x00001384   0x00000028   Code   RO         1033    i.__0sprintf$3      mc_w.l(printf3.o)
+    0x000013ac   0x000013ac   0x0000001a   Code   RO          670    i.__NVIC_EnableIRQ  ultrasonic.o
+    0x000013c6   0x000013c6   0x0000000e   Code   RO         1249    i.__scatterload_copy  mc_w.l(handlers.o)
+    0x000013d4   0x000013d4   0x0000000e   Code   RO         1251    i.__scatterload_zeroinit  mc_w.l(handlers.o)
     0x000013e2   0x000013e2   0x00000002   PAD
-    0x000013e4   0x000013e4   0x000001b8   Code   RO         1029    i._printf_core      mc_w.l(printf3.o)
-    0x0000159c   0x0000159c   0x0000000a   Code   RO         1031    i._sputc            mc_w.l(printf3.o)
+    0x000013e4   0x000013e4   0x000001b8   Code   RO         1038    i._printf_core      mc_w.l(printf3.o)
+    0x0000159c   0x0000159c   0x0000000a   Code   RO         1040    i._sputc            mc_w.l(printf3.o)
     0x000015a6   0x000015a6   0x00000002   PAD
-    0x000015a8   0x000015a8   0x00000034   Code   RO          480    i.change_velocity   car.o
-    0x000015dc   0x000015dc   0x0000001c   Code   RO          573    i.enableADC         adc.o
-    0x000015f8   0x000015f8   0x00000050   Code   RO          891    i.fpu_init          system_lpc407x_8x_177x_8x.o
-    0x00001648   0x00001648   0x00000054   Code   RO            4    i.init              main.o
-    0x0000169c   0x0000169c   0x00000028   Code   RO            5    i.main              main.o
-    0x000016c4   0x000016c4   0x00000058   Code   RO            6    i.updateAuto        main.o
-    0x0000171c   0x0000171c   0x00000180   Code   RO            7    i.updateTest        main.o
-    0x0000189c   0x0000189c   0x00000020   Code   RO          481    i.velocity_Calculator  car.o
-    0x000018bc   0x000018bc   0x00000020   Data   RO         1238    Region$$Table       anon$$obj.o
+    0x000015a8   0x000015a8   0x00000024   Code   RO            4    i.autoInit          main.o
+    0x000015cc   0x000015cc   0x00000034   Code   RO          489    i.change_velocity   car.o
+    0x00001600   0x00001600   0x0000001c   Code   RO          582    i.enableADC         adc.o
+    0x0000161c   0x0000161c   0x00000050   Code   RO          900    i.fpu_init          system_lpc407x_8x_177x_8x.o
+    0x0000166c   0x0000166c   0x00000060   Code   RO            5    i.init              main.o
+    0x000016cc   0x000016cc   0x00000034   Code   RO            6    i.main              main.o
+    0x00001700   0x00001700   0x00000320   Code   RO            7    i.updateAuto        main.o
+    0x00001a20   0x00001a20   0x00000180   Code   RO            8    i.updateTest        main.o
+    0x00001ba0   0x00001ba0   0x00000020   Code   RO          490    i.velocity_Calculator  car.o
+    0x00001bc0   0x00001bc0   0x00000020   Data   RO         1247    Region$$Table       anon$$obj.o
 
 
-    Execution Region ER_RW (Exec base: 0x10000000, Load base: 0x000018dc, Size: 0x00000058, Max: 0xffffffff, ABSOLUTE)
-
-    Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
-
-    0x10000000   0x000018dc   0x00000008   Data   RW            8    .data               main.o
-    0x10000008   0x000018e4   0x00000004   Data   RW          321    .data               external.o
-    0x1000000c   0x000018e8   0x00000004   Data   RW          482    .data               car.o
-    0x10000010   0x000018ec   0x00000006   Data   RW          575    .data               adc.o
-    0x10000016   0x000018f2   0x00000002   PAD
-    0x10000018   0x000018f4   0x00000013   Data   RW          662    .data               ultrasonic.o
-    0x1000002b   0x00001907   0x00000003   Data   RW          733    .data               hm10.o
-    0x1000002e   0x0000190a   0x00000002   PAD
-    0x10000030   0x0000190c   0x00000018   Data   RW          817    .data               serial.o
-    0x10000048   0x00001924   0x00000010   Data   RW          892    .data               system_lpc407x_8x_177x_8x.o
-
-
-    Execution Region ER_ZI (Exec base: 0x10000058, Load base: 0x00001934, Size: 0x00000518, Max: 0xffffffff, ABSOLUTE)
+    Execution Region ER_RW (Exec base: 0x10000000, Load base: 0x00001be0, Size: 0x00000074, Max: 0xffffffff, ABSOLUTE)
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
-    0x10000058        -       0x00000014   Zero   RW          574    .bss                adc.o
-    0x1000006c        -       0x00000100   Zero   RW          732    .bss                hm10.o
-    0x1000016c   0x00001934   0x00000004   PAD
-    0x10000170        -       0x00000400   Zero   RW          876    STACK               startup_lpc407x_8x_177x_8x.o
+    0x10000000   0x00001be0   0x00000024   Data   RW            9    .data               main.o
+    0x10000024   0x00001c04   0x00000004   Data   RW          330    .data               external.o
+    0x10000028   0x00001c08   0x00000004   Data   RW          491    .data               car.o
+    0x1000002c   0x00001c0c   0x00000006   Data   RW          584    .data               adc.o
+    0x10000032   0x00001c12   0x00000002   PAD
+    0x10000034   0x00001c14   0x00000013   Data   RW          671    .data               ultrasonic.o
+    0x10000047   0x00001c27   0x00000003   Data   RW          742    .data               hm10.o
+    0x1000004a   0x00001c2a   0x00000002   PAD
+    0x1000004c   0x00001c2c   0x00000018   Data   RW          826    .data               serial.o
+    0x10000064   0x00001c44   0x00000010   Data   RW          901    .data               system_lpc407x_8x_177x_8x.o
+
+
+    Execution Region ER_ZI (Exec base: 0x10000074, Load base: 0x00001c54, Size: 0x00000514, Max: 0xffffffff, ABSOLUTE)
+
+    Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
+
+    0x10000074        -       0x00000014   Zero   RW          583    .bss                adc.o
+    0x10000088        -       0x00000100   Zero   RW          741    .bss                hm10.o
+    0x10000188        -       0x00000400   Zero   RW          885    STACK               startup_lpc407x_8x_177x_8x.o
 
 
 ==============================================================================
@@ -1028,7 +1049,7 @@ Image component sizes
        132         28          0          4          0      31409   external.o
        144         14          0          0          0       3552   gpio.o
        758        246          0          3        256       4850   hm10.o
-       596         56          0          8          0      29916   main.o
+      1368        120          0         36          0      31343   main.o
        782         50          0          0          0       5231   pwm.o
        416        132          0         24          0       3166   serial.o
         40         12        228          0       1024       1120   startup_lpc407x_8x_177x_8x.o
@@ -1037,9 +1058,9 @@ Image component sizes
        538         68          0         19          0      34727   ultrasonic.o
 
     ----------------------------------------------------------------------
-      5448        762        260         88       1304     158646   Object Totals
+      6220        826        260        116       1300     160073   Object Totals
          0          0         32          0          0          0   (incl. Generated)
-        10          0          0          4          4          0   (incl. Padding)
+        10          0          0          4          0          0   (incl. Padding)
 
     ----------------------------------------------------------------------
 
@@ -1079,15 +1100,15 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   
 
-      6104        788        260         88       1304     153870   Grand Totals
-      6104        788        260         88       1304     153870   ELF Image Totals
-      6104        788        260         88          0          0   ROM Totals
+      6876        852        260        116       1300     155197   Grand Totals
+      6876        852        260        116       1300     155197   ELF Image Totals
+      6876        852        260        116          0          0   ROM Totals
 
 ==============================================================================
 
-    Total RO  Size (Code + RO Data)                 6364 (   6.21kB)
-    Total RW  Size (RW Data + ZI Data)              1392 (   1.36kB)
-    Total ROM Size (Code + RO Data + RW Data)       6452 (   6.30kB)
+    Total RO  Size (Code + RO Data)                 7136 (   6.97kB)
+    Total RW  Size (RW Data + ZI Data)              1416 (   1.38kB)
+    Total ROM Size (Code + RO Data + RW Data)       7252 (   7.08kB)
 
 ==============================================================================
 

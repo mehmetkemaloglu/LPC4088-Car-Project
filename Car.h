@@ -12,6 +12,12 @@ typedef enum {
 	BACKWARD_ = 4
 } Car_Direction;
 
+typedef enum {
+	MOVE_ = 0,
+	FIX_ = 1
+} Auto_Status;
+
+
 extern uint32_t velocity;
 
 void Car_Init();

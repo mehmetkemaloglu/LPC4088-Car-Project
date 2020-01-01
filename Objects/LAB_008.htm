@@ -3,7 +3,7 @@
 <title>Static Call Graph - [.\Objects\LAB_008.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\Objects\LAB_008.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Wed Jan 01 15:40:09 2020
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Wed Jan 01 18:06:19 2020
 <BR><P>
 <H3>Maximum Stack Usage =       1088 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -88,7 +88,7 @@ Global Symbols
 <P><STRONG><a name="[34]"></a>__main</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry.o(.ARM.Collect$$$$00000000))
 <BR>[Address Reference Count : 1]<UL><LI> startup_lpc407x_8x_177x_8x.o(.text)
 </UL>
-<P><STRONG><a name="[71]"></a>_main_stk</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry2.o(.ARM.Collect$$$$00000001))
+<P><STRONG><a name="[72]"></a>_main_stk</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry2.o(.ARM.Collect$$$$00000001))
 
 <P><STRONG><a name="[37]"></a>_main_scatterload</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry5.o(.ARM.Collect$$$$00000004))
 <BR><BR>[Calls]<UL><LI><a href="#[38]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__scatterload
@@ -98,15 +98,15 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[38]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__scatterload
 </UL>
 
-<P><STRONG><a name="[72]"></a>_main_clock</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry7b.o(.ARM.Collect$$$$00000008))
+<P><STRONG><a name="[73]"></a>_main_clock</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry7b.o(.ARM.Collect$$$$00000008))
 
-<P><STRONG><a name="[73]"></a>_main_cpp_init</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry8b.o(.ARM.Collect$$$$0000000A))
+<P><STRONG><a name="[74]"></a>_main_cpp_init</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry8b.o(.ARM.Collect$$$$0000000A))
 
-<P><STRONG><a name="[74]"></a>_main_init</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry9a.o(.ARM.Collect$$$$0000000B))
+<P><STRONG><a name="[75]"></a>_main_init</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry9a.o(.ARM.Collect$$$$0000000B))
 
-<P><STRONG><a name="[75]"></a>__rt_final_cpp</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry10a.o(.ARM.Collect$$$$0000000D))
+<P><STRONG><a name="[76]"></a>__rt_final_cpp</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry10a.o(.ARM.Collect$$$$0000000D))
 
-<P><STRONG><a name="[76]"></a>__rt_final_exit</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry11a.o(.ARM.Collect$$$$0000000F))
+<P><STRONG><a name="[77]"></a>__rt_final_exit</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry11a.o(.ARM.Collect$$$$0000000F))
 
 <P><STRONG><a name="[36]"></a>Reset_Handler</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, startup_lpc407x_8x_177x_8x.o(.text))
 
@@ -285,7 +285,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[49]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Serial_DetectCommand
 </UL>
 
-<P><STRONG><a name="[77]"></a>__aeabi_uidiv</STRONG> (Thumb, 0 bytes, Stack size 12 bytes, uidiv.o(.text), UNUSED)
+<P><STRONG><a name="[78]"></a>__aeabi_uidiv</STRONG> (Thumb, 0 bytes, Stack size 12 bytes, uidiv.o(.text), UNUSED)
 
 <P><STRONG><a name="[65]"></a>__aeabi_uidivmod</STRONG> (Thumb, 44 bytes, Stack size 12 bytes, uidiv.o(.text), UNUSED)
 <BR><BR>[Called By]<UL><LI><a href="#[64]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_printf_core
@@ -297,10 +297,11 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[37]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_main_scatterload
 </UL>
 
-<P><STRONG><a name="[78]"></a>__scatterload_rt2</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, init.o(.text), UNUSED)
+<P><STRONG><a name="[79]"></a>__scatterload_rt2</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, init.o(.text), UNUSED)
 
-<P><STRONG><a name="[6f]"></a>ADC_GetLastValue</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, adc.o(i.ADC_GetLastValue))
-<BR><BR>[Called By]<UL><LI><a href="#[6d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;updateTest
+<P><STRONG><a name="[70]"></a>ADC_GetLastValue</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, adc.o(i.ADC_GetLastValue))
+<BR><BR>[Called By]<UL><LI><a href="#[6e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;updateTest
+<LI><a href="#[6f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;updateAuto
 </UL>
 
 <P><STRONG><a name="[1f]"></a>ADC_IRQHandler</STRONG> (Thumb, 108 bytes, Stack size 4 bytes, adc.o(i.ADC_IRQHandler))
@@ -310,15 +311,15 @@ Global Symbols
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> startup_lpc407x_8x_177x_8x.o(RESET)
 </UL>
-<P><STRONG><a name="[6a]"></a>ADC_Start</STRONG> (Thumb, 16 bytes, Stack size 0 bytes, adc.o(i.ADC_Start))
-<BR><BR>[Called By]<UL><LI><a href="#[67]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;init
+<P><STRONG><a name="[6b]"></a>ADC_Start</STRONG> (Thumb, 16 bytes, Stack size 0 bytes, adc.o(i.ADC_Start))
+<BR><BR>[Called By]<UL><LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;init
 </UL>
 
 <P><STRONG><a name="[1b]"></a>EINT0_IRQHandler</STRONG> (Thumb, 26 bytes, Stack size 0 bytes, external.o(i.EINT0_IRQHandler))
 <BR>[Address Reference Count : 1]<UL><LI> startup_lpc407x_8x_177x_8x.o(RESET)
 </UL>
-<P><STRONG><a name="[6b]"></a>External_Init</STRONG> (Thumb, 78 bytes, Stack size 0 bytes, external.o(i.External_Init))
-<BR><BR>[Called By]<UL><LI><a href="#[67]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;init
+<P><STRONG><a name="[6c]"></a>External_Init</STRONG> (Thumb, 78 bytes, Stack size 0 bytes, external.o(i.External_Init))
+<BR><BR>[Called By]<UL><LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;init
 </UL>
 
 <P><STRONG><a name="[3b]"></a>GO_BACKWARD</STRONG> (Thumb, 12 bytes, Stack size 8 bytes, car.o(i.GO_BACKWARD))
@@ -327,7 +328,8 @@ Global Symbols
 <BR>[Calls]<UL><LI><a href="#[3c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GO_BACKWARD_MOTOR
 <LI><a href="#[3d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GO_BACKWARD_LED
 </UL>
-<BR>[Called By]<UL><LI><a href="#[6d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;updateTest
+<BR>[Called By]<UL><LI><a href="#[6e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;updateTest
+<LI><a href="#[6f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;updateAuto
 </UL>
 
 <P><STRONG><a name="[3d]"></a>GO_BACKWARD_LED</STRONG> (Thumb, 42 bytes, Stack size 4 bytes, pwm.o(i.GO_BACKWARD_LED))
@@ -345,17 +347,17 @@ Global Symbols
 <BR>[Calls]<UL><LI><a href="#[41]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GO_FORWARD_MOTOR
 <LI><a href="#[42]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GO_FORWARD_LED
 </UL>
-<BR>[Called By]<UL><LI><a href="#[6d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;updateTest
-<LI><a href="#[6e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;updateAuto
-<LI><a href="#[67]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;init
+<BR>[Called By]<UL><LI><a href="#[6e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;updateTest
+<LI><a href="#[6f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;updateAuto
+<LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;init
 </UL>
 
-<P><STRONG><a name="[79]"></a>__scatterload_null</STRONG> (Thumb, 2 bytes, Stack size unknown bytes, handlers.o(i.__scatterload_null), UNUSED)
+<P><STRONG><a name="[7a]"></a>__scatterload_null</STRONG> (Thumb, 2 bytes, Stack size unknown bytes, handlers.o(i.__scatterload_null), UNUSED)
 
-<P><STRONG><a name="[68]"></a>ADC_Init</STRONG> (Thumb, 236 bytes, Stack size 16 bytes, adc.o(i.ADC_Init))
+<P><STRONG><a name="[69]"></a>ADC_Init</STRONG> (Thumb, 236 bytes, Stack size 16 bytes, adc.o(i.ADC_Init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = ADC_Init
 </UL>
-<BR>[Called By]<UL><LI><a href="#[67]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;init
+<BR>[Called By]<UL><LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;init
 </UL>
 
 <P><STRONG><a name="[3c]"></a>GO_BACKWARD_MOTOR</STRONG> (Thumb, 48 bytes, Stack size 8 bytes, car.o(i.GO_BACKWARD_MOTOR))
@@ -392,7 +394,7 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[45]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_DIR_Write
 </UL>
-<BR>[Called By]<UL><LI><a href="#[67]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;init
+<BR>[Called By]<UL><LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;init
 </UL>
 
 <P><STRONG><a name="[43]"></a>GPIO_PIN_Write</STRONG> (Thumb, 18 bytes, Stack size 0 bytes, gpio.o(i.GPIO_PIN_Write))
@@ -412,7 +414,7 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[47]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HM10_Write
 </UL>
-<BR>[Called By]<UL><LI><a href="#[67]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;init
+<BR>[Called By]<UL><LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;init
 </UL>
 
 <P><STRONG><a name="[48]"></a>HM10_ReadCommand</STRONG> (Thumb, 188 bytes, Stack size 1064 bytes, hm10.o(i.HM10_ReadCommand))
@@ -456,7 +458,7 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[3f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PWM0_Write
 </UL>
-<BR>[Called By]<UL><LI><a href="#[67]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;init
+<BR>[Called By]<UL><LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;init
 </UL>
 
 <P><STRONG><a name="[3f]"></a>PWM0_Write</STRONG> (Thumb, 114 bytes, Stack size 0 bytes, pwm.o(i.PWM0_Write))
@@ -473,11 +475,11 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[4f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PWM1_Write
 </UL>
-<BR>[Called By]<UL><LI><a href="#[67]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;init
+<BR>[Called By]<UL><LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;init
 </UL>
 
 <P><STRONG><a name="[4f]"></a>PWM1_Write</STRONG> (Thumb, 64 bytes, Stack size 0 bytes, pwm.o(i.PWM1_Write))
-<BR><BR>[Called By]<UL><LI><a href="#[66]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;change_velocity
+<BR><BR>[Called By]<UL><LI><a href="#[67]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;change_velocity
 <LI><a href="#[4e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PWM1_Init
 </UL>
 
@@ -487,7 +489,9 @@ Global Symbols
 <BR>[Calls]<UL><LI><a href="#[51]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;STOP_MOTOR
 <LI><a href="#[52]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;STOP_LED
 </UL>
-<BR>[Called By]<UL><LI><a href="#[6d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;updateTest
+<BR>[Called By]<UL><LI><a href="#[6e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;updateTest
+<LI><a href="#[6f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;updateAuto
+<LI><a href="#[66]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;autoInit
 </UL>
 
 <P><STRONG><a name="[52]"></a>STOP_LED</STRONG> (Thumb, 42 bytes, Stack size 4 bytes, pwm.o(i.STOP_LED))
@@ -549,8 +553,8 @@ Global Symbols
 <BR>[Calls]<UL><LI><a href="#[57]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TURN_LEFT_MOTOR
 <LI><a href="#[58]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TURN_LEFT_LED
 </UL>
-<BR>[Called By]<UL><LI><a href="#[6d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;updateTest
-<LI><a href="#[6e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;updateAuto
+<BR>[Called By]<UL><LI><a href="#[6e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;updateTest
+<LI><a href="#[6f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;updateAuto
 </UL>
 
 <P><STRONG><a name="[58]"></a>TURN_LEFT_LED</STRONG> (Thumb, 44 bytes, Stack size 4 bytes, pwm.o(i.TURN_LEFT_LED))
@@ -576,8 +580,8 @@ Global Symbols
 <BR>[Calls]<UL><LI><a href="#[5a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TURN_RIGHT_MOTOR
 <LI><a href="#[5b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TURN_RIGHT_LED
 </UL>
-<BR>[Called By]<UL><LI><a href="#[6d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;updateTest
-<LI><a href="#[6e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;updateAuto
+<BR>[Called By]<UL><LI><a href="#[6e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;updateTest
+<LI><a href="#[6f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;updateAuto
 </UL>
 
 <P><STRONG><a name="[5b]"></a>TURN_RIGHT_LED</STRONG> (Thumb, 44 bytes, Stack size 4 bytes, pwm.o(i.TURN_RIGHT_LED))
@@ -597,8 +601,8 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[59]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TURN_RIGHT
 </UL>
 
-<P><STRONG><a name="[69]"></a>Timer_Init</STRONG> (Thumb, 126 bytes, Stack size 0 bytes, timer.o(i.Timer_Init))
-<BR><BR>[Called By]<UL><LI><a href="#[67]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;init
+<P><STRONG><a name="[6a]"></a>Timer_Init</STRONG> (Thumb, 126 bytes, Stack size 0 bytes, timer.o(i.Timer_Init))
+<BR><BR>[Called By]<UL><LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;init
 </UL>
 
 <P><STRONG><a name="[f]"></a>UART0_IRQHandler</STRONG> (Thumb, 74 bytes, Stack size 8 bytes, serial.o(i.UART0_IRQHandler))
@@ -621,11 +625,11 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[60]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__NVIC_EnableIRQ
 </UL>
-<BR>[Called By]<UL><LI><a href="#[67]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;init
+<BR>[Called By]<UL><LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;init
 </UL>
 
-<P><STRONG><a name="[6c]"></a>Ultrasonic_Init</STRONG> (Thumb, 24 bytes, Stack size 0 bytes, ultrasonic.o(i.Ultrasonic_Init))
-<BR><BR>[Called By]<UL><LI><a href="#[67]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;init
+<P><STRONG><a name="[6d]"></a>Ultrasonic_Init</STRONG> (Thumb, 24 bytes, Stack size 0 bytes, ultrasonic.o(i.Ultrasonic_Init))
+<BR><BR>[Called By]<UL><LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;init
 </UL>
 
 <P><STRONG><a name="[61]"></a>Ultrasonic_Start_Trigger_Timer</STRONG> (Thumb, 58 bytes, Stack size 8 bytes, ultrasonic.o(i.Ultrasonic_Start_Trigger_Timer))
@@ -633,7 +637,7 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[60]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__NVIC_EnableIRQ
 </UL>
-<BR>[Called By]<UL><LI><a href="#[67]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;init
+<BR>[Called By]<UL><LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;init
 </UL>
 
 <P><STRONG><a name="[62]"></a>Ultrasonic_Trigger_Timer_Init</STRONG> (Thumb, 138 bytes, Stack size 16 bytes, ultrasonic.o(i.Ultrasonic_Trigger_Timer_Init))
@@ -641,7 +645,7 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[60]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__NVIC_EnableIRQ
 </UL>
-<BR>[Called By]<UL><LI><a href="#[67]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;init
+<BR>[Called By]<UL><LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;init
 </UL>
 
 <P><STRONG><a name="[63]"></a>__0sprintf$3</STRONG> (Thumb, 34 bytes, Stack size 24 bytes, printf3.o(i.__0sprintf$3), UNUSED)
@@ -649,7 +653,7 @@ Global Symbols
 <LI><a href="#[64]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_printf_core
 </UL>
 
-<P><STRONG><a name="[7a]"></a>__1sprintf$3</STRONG> (Thumb, 0 bytes, Stack size 24 bytes, printf3.o(i.__0sprintf$3), UNUSED)
+<P><STRONG><a name="[7b]"></a>__1sprintf$3</STRONG> (Thumb, 0 bytes, Stack size 24 bytes, printf3.o(i.__0sprintf$3), UNUSED)
 
 <P><STRONG><a name="[4b]"></a>__2sprintf</STRONG> (Thumb, 0 bytes, Stack size 24 bytes, printf3.o(i.__0sprintf$3))
 <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = __2sprintf
@@ -657,16 +661,24 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[48]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HM10_ReadCommand
 </UL>
 
-<P><STRONG><a name="[7b]"></a>__scatterload_copy</STRONG> (Thumb, 14 bytes, Stack size unknown bytes, handlers.o(i.__scatterload_copy), UNUSED)
+<P><STRONG><a name="[7c]"></a>__scatterload_copy</STRONG> (Thumb, 14 bytes, Stack size unknown bytes, handlers.o(i.__scatterload_copy), UNUSED)
 
-<P><STRONG><a name="[7c]"></a>__scatterload_zeroinit</STRONG> (Thumb, 14 bytes, Stack size unknown bytes, handlers.o(i.__scatterload_zeroinit), UNUSED)
+<P><STRONG><a name="[7d]"></a>__scatterload_zeroinit</STRONG> (Thumb, 14 bytes, Stack size unknown bytes, handlers.o(i.__scatterload_zeroinit), UNUSED)
 
-<P><STRONG><a name="[66]"></a>change_velocity</STRONG> (Thumb, 48 bytes, Stack size 8 bytes, car.o(i.change_velocity))
+<P><STRONG><a name="[66]"></a>autoInit</STRONG> (Thumb, 24 bytes, Stack size 8 bytes, main.o(i.autoInit))
+<BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = autoInit &rArr; STOP &rArr; STOP_MOTOR
+</UL>
+<BR>[Calls]<UL><LI><a href="#[50]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;STOP
+</UL>
+<BR>[Called By]<UL><LI><a href="#[6f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;updateAuto
+</UL>
+
+<P><STRONG><a name="[67]"></a>change_velocity</STRONG> (Thumb, 48 bytes, Stack size 8 bytes, car.o(i.change_velocity))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = change_velocity
 </UL>
 <BR>[Calls]<UL><LI><a href="#[4f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PWM1_Write
 </UL>
-<BR>[Called By]<UL><LI><a href="#[6d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;updateTest
+<BR>[Called By]<UL><LI><a href="#[6e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;updateTest
 </UL>
 
 <P><STRONG><a name="[3a]"></a>enableADC</STRONG> (Thumb, 22 bytes, Stack size 0 bytes, adc.o(i.enableADC))
@@ -679,63 +691,67 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[33]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SystemInit
 </UL>
 
-<P><STRONG><a name="[67]"></a>init</STRONG> (Thumb, 72 bytes, Stack size 8 bytes, main.o(i.init))
+<P><STRONG><a name="[68]"></a>init</STRONG> (Thumb, 80 bytes, Stack size 8 bytes, main.o(i.init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = init &rArr; Ultrasonic_Trigger_Timer_Init
 </UL>
 <BR>[Calls]<UL><LI><a href="#[62]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Ultrasonic_Trigger_Timer_Init
 <LI><a href="#[61]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Ultrasonic_Start_Trigger_Timer
-<LI><a href="#[6c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Ultrasonic_Init
+<LI><a href="#[6d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Ultrasonic_Init
 <LI><a href="#[5f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Ultrasonic_Capture_Timer_Init
-<LI><a href="#[69]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Timer_Init
+<LI><a href="#[6a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Timer_Init
 <LI><a href="#[4e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PWM1_Init
 <LI><a href="#[4d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PWM0_Init
 <LI><a href="#[46]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HM10_Init
 <LI><a href="#[44]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_Motor_Init
 <LI><a href="#[40]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GO_FORWARD
-<LI><a href="#[6b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;External_Init
-<LI><a href="#[6a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC_Start
-<LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC_Init
+<LI><a href="#[6c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;External_Init
+<LI><a href="#[6b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC_Start
+<LI><a href="#[69]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC_Init
 </UL>
 <BR>[Called By]<UL><LI><a href="#[32]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[32]"></a>main</STRONG> (Thumb, 36 bytes, Stack size 0 bytes, main.o(i.main))
+<P><STRONG><a name="[32]"></a>main</STRONG> (Thumb, 42 bytes, Stack size 0 bytes, main.o(i.main))
 <BR><BR>[Stack]<UL><LI>Max Depth = 1088<LI>Call Chain = main &rArr; HM10_ReadCommand &rArr; __2sprintf
 </UL>
 <BR>[Calls]<UL><LI><a href="#[48]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HM10_ReadCommand
-<LI><a href="#[6d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;updateTest
-<LI><a href="#[6e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;updateAuto
-<LI><a href="#[67]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;init
+<LI><a href="#[6e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;updateTest
+<LI><a href="#[6f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;updateAuto
+<LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;init
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> entry9a.o(.ARM.Collect$$$$0000000B)
 </UL>
-<P><STRONG><a name="[6e]"></a>updateAuto</STRONG> (Thumb, 70 bytes, Stack size 8 bytes, main.o(i.updateAuto))
-<BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = updateAuto &rArr; TURN_RIGHT &rArr; TURN_RIGHT_MOTOR
+<P><STRONG><a name="[6f]"></a>updateAuto</STRONG> (Thumb, 740 bytes, Stack size 8 bytes, main.o(i.updateAuto))
+<BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = updateAuto &rArr; autoInit &rArr; STOP &rArr; STOP_MOTOR
 </UL>
 <BR>[Calls]<UL><LI><a href="#[59]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TURN_RIGHT
 <LI><a href="#[56]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TURN_LEFT
+<LI><a href="#[50]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;STOP
 <LI><a href="#[40]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GO_FORWARD
+<LI><a href="#[3b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GO_BACKWARD
+<LI><a href="#[70]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC_GetLastValue
+<LI><a href="#[66]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;autoInit
 </UL>
 <BR>[Called By]<UL><LI><a href="#[32]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[6d]"></a>updateTest</STRONG> (Thumb, 362 bytes, Stack size 16 bytes, main.o(i.updateTest))
+<P><STRONG><a name="[6e]"></a>updateTest</STRONG> (Thumb, 362 bytes, Stack size 16 bytes, main.o(i.updateTest))
 <BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = updateTest &rArr; TURN_RIGHT &rArr; TURN_RIGHT_MOTOR
 </UL>
-<BR>[Calls]<UL><LI><a href="#[70]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;velocity_Calculator
-<LI><a href="#[66]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;change_velocity
+<BR>[Calls]<UL><LI><a href="#[71]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;velocity_Calculator
+<LI><a href="#[67]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;change_velocity
 <LI><a href="#[59]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TURN_RIGHT
 <LI><a href="#[56]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TURN_LEFT
 <LI><a href="#[50]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;STOP
 <LI><a href="#[40]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GO_FORWARD
 <LI><a href="#[3b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GO_BACKWARD
-<LI><a href="#[6f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC_GetLastValue
+<LI><a href="#[70]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC_GetLastValue
 </UL>
 <BR>[Called By]<UL><LI><a href="#[32]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[70]"></a>velocity_Calculator</STRONG> (Thumb, 32 bytes, Stack size 0 bytes, car.o(i.velocity_Calculator))
-<BR><BR>[Called By]<UL><LI><a href="#[6d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;updateTest
+<P><STRONG><a name="[71]"></a>velocity_Calculator</STRONG> (Thumb, 32 bytes, Stack size 0 bytes, car.o(i.velocity_Calculator))
+<BR><BR>[Called By]<UL><LI><a href="#[6e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;updateTest
 </UL>
 <P>
 <H3>
