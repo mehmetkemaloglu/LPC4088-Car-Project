@@ -9,4 +9,7 @@
 .\objects\serial.o: C:\Users\casper\AppData\Local\Arm\Packs\ARM\CMSIS\5.5.1\CMSIS\Core\Include\mpu_armv7.h
 .\objects\serial.o: C:\Users\casper\AppData\Local\Arm\Packs\Keil\LPC4000_DFP\2.1.0\Device\Include\system_LPC407x_8x_177x_8x.h
 .\objects\serial.o: Library\SystemStructures.h
+.\objects\serial.o: Library\../Car.h
+.\objects\serial.o: Library\../Library/PWM.h
+.\objects\serial.o: Library\../Library/GPIO.h
 .\objects\serial.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h

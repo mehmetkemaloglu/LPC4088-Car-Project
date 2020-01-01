@@ -13,7 +13,6 @@
 #include "Library/External.h"
 #include "stdlib.h"
 
-uint32_t status;
 uint32_t lastStatus;
 uint32_t auto_status;
 uint32_t lastDistance;
@@ -22,6 +21,8 @@ uint8_t isAuto = 0;
 uint32_t isFixStart = 0;
 uint32_t isTurning = 0;
 uint32_t isHardTurning = 0;
+uint32_t LDRStop = 0;
+uint32_t status = 0;
 
 
 void init() {
@@ -29,8 +30,8 @@ void init() {
 	PWM0_Init();
 	PWM1_Init();
 	GPIO_Motor_Init();
-	GO_FORWARD();
-	status = FORWARD_;
+	STOP();
+	status = STOP_;
 	
 
 	ADC_Init();
@@ -50,9 +51,9 @@ void init() {
 	//Serial_Init();
 	
 	//
-	serialSelectedCommand = SERIAL_AUTO;
+	serialSelectedCommand = SERIAL_TEST;
 	
-	selectedMode =MODE_AUTO;
+	selectedMode =MODE_TEST;
 	
 	auto_status = MOVE_;
 	
@@ -75,6 +76,7 @@ void autoInit() {
 	isAuto = 1;
 	turn = 0;
 	status = STOP_;
+	serialSelectedCommand = SERIAL_STOP;
 	STOP();
 }
 	
@@ -94,10 +96,9 @@ void updateTest() {
 		}
 	}
 	else if(serialSelectedCommand == SERIAL_STOP){
-		if(status != STOP_){
-			STOP();
-			status = STOP_;
-		}
+		STOP();
+		status = STOP_;
+		
 	}
 	else if(serialSelectedCommand == SERIAL_LEFT){
 		if(status != LEFT_){
@@ -171,14 +172,14 @@ void updateAuto() {
 		 if(ultrasonicSensorDistance > 400){
 			 return;
 		 }
-		if( ultrasonicSensorDistance < 15 && !isTurning ) {
-			if(status != RIGHT_){
+		if( ultrasonicSensorDistance < 15 && !isTurning && LDRStop == 0 ) {
+			if(turn >= 1 && status != RIGHT_){
 						TURN_RIGHT();
 						status = RIGHT_;
 						turn = 0;
 						isHardTurning = 1;
 			}
-			if(turn >= 1){
+			if(turn >= 2){
 				turn = 0;
 				auto_status = MOVE_;
 				status= FORWARD_;
@@ -186,14 +187,14 @@ void updateAuto() {
 				isHardTurning = 0;
 			}
 		}
-		else if(ultrasonicSensorDistance > 35 && !isTurning ) {
-			if(status != LEFT_){
+		else if(ultrasonicSensorDistance > 35 && !isTurning && LDRStop == 0) {
+			if(turn >= 1 && status != LEFT_){
 						TURN_LEFT();
 						status = LEFT_;
 						turn = 0;
 						isHardTurning = 1;
 			}
-			if(turn >= 1){
+			if(turn >= 2){
 				turn = 0;
 				auto_status = MOVE_;
 				status= FORWARD_;
@@ -201,7 +202,7 @@ void updateAuto() {
 				isHardTurning = 0;
 			}
 		}	
-		else if (!isHardTurning ) { 
+		else if (!isHardTurning && LDRStop == 0) { 
 			if(auto_status == MOVE_){
 				if(status != FORWARD_){
 					lastDistance = ultrasonicSensorDistance;
@@ -280,36 +281,23 @@ void updateAuto() {
 				}
 			}
 		}
-	}
 	
-	if(ADC_New_Data_Available == 1){
-		uint32_t* adc = ADC_GetLastValue();
-		if(adc[2] < 0x600 || adc[3] < 0x600){			
-			if(status != STOP_){
-				STOP();
-				lastStatus = status;
-				status = STOP_;
+		if(ADC_New_Data_Available == 1){
+			uint32_t* adc = ADC_GetLastValue();
+			if(adc[2] < 0x600 || adc[3] < 0x600){			
+				if(status != STOP_){
+					STOP();
+					lastStatus = status;
+					status = STOP_;
+					LDRStop = 1;
+				}
 			}
-		}
-		else if(status == STOP_){
-			if(lastStatus == FORWARD_){
-				GO_FORWARD();
-				status = FORWARD_;
+			else if(LDRStop == 1){
+				LDRStop = 0;
 			}
-			else if(lastStatus == LEFT_){
-				TURN_LEFT();
-				status = LEFT_;
-			}
-			else if(lastStatus == RIGHT_){
-				TURN_RIGHT();
-				status = RIGHT_;
-			}
-			else if(lastStatus == BACKWARD_){
-				GO_BACKWARD();
-				status = BACKWARD_;
-			}
-		}
 		//change_velocity(velocity_Calculator(adc[4]));
+		}
+		
 	}
 }
 

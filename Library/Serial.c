@@ -1,4 +1,5 @@
 #include "Serial.h"
+#include "../Car.h"
 #include <string.h>
 
 char serialReceivedCharacter = 0;
@@ -152,12 +153,14 @@ void Serial_DetectCommand(char * chars){
 	}
 	else if(strcmp(chars, "AUTO\r\n") == 0){
 		serialSelectedCommand = SERIAL_AUTO;
+		status = STOP_;
 	}
 	else if(strcmp(chars, "BACK\r\n") == 0){
 		serialSelectedCommand = SERIAL_BACK;
 	}
 	else if(strcmp(chars, "TEST\r\n") == 0){
 		serialSelectedCommand = SERIAL_TEST;
+		status = STOP_;
 	}
 	else{
 		serialSelectedCommand = SERIAL_ELSE;

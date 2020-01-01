@@ -3,7 +3,7 @@
 <title>Static Call Graph - [.\Objects\LAB_008.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\Objects\LAB_008.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Wed Jan 01 18:06:19 2020
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Wed Jan 01 19:14:18 2020
 <BR><P>
 <H3>Maximum Stack Usage =       1088 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -329,7 +329,6 @@ Global Symbols
 <LI><a href="#[3d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GO_BACKWARD_LED
 </UL>
 <BR>[Called By]<UL><LI><a href="#[6e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;updateTest
-<LI><a href="#[6f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;updateAuto
 </UL>
 
 <P><STRONG><a name="[3d]"></a>GO_BACKWARD_LED</STRONG> (Thumb, 42 bytes, Stack size 4 bytes, pwm.o(i.GO_BACKWARD_LED))
@@ -349,7 +348,6 @@ Global Symbols
 </UL>
 <BR>[Called By]<UL><LI><a href="#[6e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;updateTest
 <LI><a href="#[6f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;updateAuto
-<LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;init
 </UL>
 
 <P><STRONG><a name="[7a]"></a>__scatterload_null</STRONG> (Thumb, 2 bytes, Stack size unknown bytes, handlers.o(i.__scatterload_null), UNUSED)
@@ -491,6 +489,7 @@ Global Symbols
 </UL>
 <BR>[Called By]<UL><LI><a href="#[6e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;updateTest
 <LI><a href="#[6f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;updateAuto
+<LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;init
 <LI><a href="#[66]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;autoInit
 </UL>
 
@@ -511,7 +510,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[50]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;STOP
 </UL>
 
-<P><STRONG><a name="[49]"></a>Serial_DetectCommand</STRONG> (Thumb, 192 bytes, Stack size 8 bytes, serial.o(i.Serial_DetectCommand))
+<P><STRONG><a name="[49]"></a>Serial_DetectCommand</STRONG> (Thumb, 202 bytes, Stack size 8 bytes, serial.o(i.Serial_DetectCommand))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = Serial_DetectCommand &rArr; strcmp
 </UL>
 <BR>[Calls]<UL><LI><a href="#[53]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;strcmp
@@ -665,7 +664,7 @@ Global Symbols
 
 <P><STRONG><a name="[7d]"></a>__scatterload_zeroinit</STRONG> (Thumb, 14 bytes, Stack size unknown bytes, handlers.o(i.__scatterload_zeroinit), UNUSED)
 
-<P><STRONG><a name="[66]"></a>autoInit</STRONG> (Thumb, 24 bytes, Stack size 8 bytes, main.o(i.autoInit))
+<P><STRONG><a name="[66]"></a>autoInit</STRONG> (Thumb, 30 bytes, Stack size 8 bytes, main.o(i.autoInit))
 <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = autoInit &rArr; STOP &rArr; STOP_MOTOR
 </UL>
 <BR>[Calls]<UL><LI><a href="#[50]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;STOP
@@ -691,7 +690,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[33]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SystemInit
 </UL>
 
-<P><STRONG><a name="[68]"></a>init</STRONG> (Thumb, 80 bytes, Stack size 8 bytes, main.o(i.init))
+<P><STRONG><a name="[68]"></a>init</STRONG> (Thumb, 76 bytes, Stack size 8 bytes, main.o(i.init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = init &rArr; Ultrasonic_Trigger_Timer_Init
 </UL>
 <BR>[Calls]<UL><LI><a href="#[62]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Ultrasonic_Trigger_Timer_Init
@@ -699,11 +698,11 @@ Global Symbols
 <LI><a href="#[6d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Ultrasonic_Init
 <LI><a href="#[5f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Ultrasonic_Capture_Timer_Init
 <LI><a href="#[6a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Timer_Init
+<LI><a href="#[50]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;STOP
 <LI><a href="#[4e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PWM1_Init
 <LI><a href="#[4d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PWM0_Init
 <LI><a href="#[46]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HM10_Init
 <LI><a href="#[44]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_Motor_Init
-<LI><a href="#[40]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GO_FORWARD
 <LI><a href="#[6c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;External_Init
 <LI><a href="#[6b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC_Start
 <LI><a href="#[69]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC_Init
@@ -721,21 +720,20 @@ Global Symbols
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> entry9a.o(.ARM.Collect$$$$0000000B)
 </UL>
-<P><STRONG><a name="[6f]"></a>updateAuto</STRONG> (Thumb, 740 bytes, Stack size 8 bytes, main.o(i.updateAuto))
+<P><STRONG><a name="[6f]"></a>updateAuto</STRONG> (Thumb, 712 bytes, Stack size 8 bytes, main.o(i.updateAuto))
 <BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = updateAuto &rArr; autoInit &rArr; STOP &rArr; STOP_MOTOR
 </UL>
 <BR>[Calls]<UL><LI><a href="#[59]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TURN_RIGHT
 <LI><a href="#[56]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TURN_LEFT
 <LI><a href="#[50]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;STOP
 <LI><a href="#[40]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GO_FORWARD
-<LI><a href="#[3b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GO_BACKWARD
 <LI><a href="#[70]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC_GetLastValue
 <LI><a href="#[66]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;autoInit
 </UL>
 <BR>[Called By]<UL><LI><a href="#[32]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[6e]"></a>updateTest</STRONG> (Thumb, 362 bytes, Stack size 16 bytes, main.o(i.updateTest))
+<P><STRONG><a name="[6e]"></a>updateTest</STRONG> (Thumb, 354 bytes, Stack size 16 bytes, main.o(i.updateTest))
 <BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = updateTest &rArr; TURN_RIGHT &rArr; TURN_RIGHT_MOTOR
 </UL>
 <BR>[Calls]<UL><LI><a href="#[71]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;velocity_Calculator
