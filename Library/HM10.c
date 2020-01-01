@@ -123,6 +123,7 @@ void HM10_ReadCommand(){
 			uint32_t ultrasonicSensorDistance = (ultrasonicSensorFallingCaptureTime - ultrasonicSensorRisingCaptureTime) / 58;
 			sprintf(status, "%s%d%s%d%s%d%s%s%s", "{\"distance\":", ultrasonicSensorDistance,",\"light_level_left\":", ADC_Last_Value[2]/4, ",\"light_level_right\":", ADC_Last_Value[3]/4, ",\"op_mode\":\"", op_mode, "\"}\r\n");
 			HM10_Write(status);
+			serialSelectedCommand = SERIAL_ELSE;
 		}
 	}
 }

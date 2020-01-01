@@ -45,12 +45,22 @@ typedef enum {
 #define IOCON_MOTOR_IN1	*((volatile uint32_t*)(IOCON_MOTOR_IN1_ADDRESS))
 #define IOCON_MOTOR_IN2_ADDRESS	 0x4002C284
 #define IOCON_MOTOR_IN2	*((volatile uint32_t*)(IOCON_MOTOR_IN2_ADDRESS))
+#define IOCON_MOTOR_IN3_ADDRESS	 0x4002C010
+#define IOCON_MOTOR_IN3	*((volatile uint32_t*)(IOCON_MOTOR_IN3_ADDRESS))
+#define IOCON_MOTOR_IN4_ADDRESS	 0x4002C014
+#define IOCON_MOTOR_IN4	*((volatile uint32_t*)(IOCON_MOTOR_IN4_ADDRESS))
 
 #define IN1_PORT			PORT5
 #define IN1_MASK			((uint32_t) 1 << 0)
 
 #define IN2_PORT			PORT5
 #define IN2_MASK			((uint32_t) 1 << 1)
+
+#define IN3_PORT			PORT0
+#define IN3_MASK			((uint32_t) 1 << 4)
+
+#define IN4_PORT			PORT0
+#define IN4_MASK			((uint32_t) 1 << 5)
 
 void GPIO_DIR_Write(GPIO_TypeDef* PORT,uint32_t MASK,uint8_t value);
 void GPIO_PIN_Write(GPIO_TypeDef* PORT,uint32_t MASK,uint8_t value);

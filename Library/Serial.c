@@ -117,7 +117,7 @@ void Serial_ReadCommand(){
 					write_Characters("TESTING\r\n");
 				}
 				else if(serialSelectedCommand == SERIAL_STATUS){
-					write_Status();
+					
 				}
 				break;
 			}
@@ -169,10 +169,6 @@ void write_Characters(char * character){
 	serialTransmitData = character;
 	Serial_WriteData(*serialTransmitData++);
 	while(!serialTransmitCompleted);
-}
-
-void write_Status(){
-	write_Characters("Status is :");
 }
 
 

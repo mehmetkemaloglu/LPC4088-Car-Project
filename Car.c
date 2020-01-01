@@ -33,6 +33,8 @@ void GO_FORWARD_MOTOR() {
 	
 	GPIO_PIN_Write(IN1_PORT, IN1_MASK, 1);
 	GPIO_PIN_Write(IN2_PORT, IN2_MASK, 0);
+	GPIO_PIN_Write(IN3_PORT, IN3_MASK, 0);
+	GPIO_PIN_Write(IN4_PORT, IN4_MASK, 1);
 
 }
 
@@ -42,6 +44,8 @@ void GO_BACKWARD_MOTOR() {
 
 	GPIO_PIN_Write(IN1_PORT, IN1_MASK, 0);
 	GPIO_PIN_Write(IN2_PORT, IN2_MASK, 1);
+	GPIO_PIN_Write(IN3_PORT, IN3_MASK, 1);
+	GPIO_PIN_Write(IN4_PORT, IN4_MASK, 0);
 
 }
 
@@ -51,6 +55,8 @@ void TURN_LEFT_MOTOR() {
 
 	GPIO_PIN_Write(IN1_PORT, IN1_MASK, 0);
 	GPIO_PIN_Write(IN2_PORT, IN2_MASK, 1);
+	GPIO_PIN_Write(IN3_PORT, IN3_MASK, 0);
+	GPIO_PIN_Write(IN4_PORT, IN4_MASK, 1);
 
 }
 
@@ -60,6 +66,8 @@ void TURN_RIGHT_MOTOR() {
 
 	GPIO_PIN_Write(IN1_PORT, IN1_MASK, 1);
 	GPIO_PIN_Write(IN2_PORT, IN2_MASK, 0);
+	GPIO_PIN_Write(IN3_PORT, IN3_MASK, 1);
+	GPIO_PIN_Write(IN4_PORT, IN4_MASK, 0);
 
 }
 
@@ -69,6 +77,8 @@ void STOP_MOTOR() {
 
 	GPIO_PIN_Write(IN1_PORT, IN1_MASK, 0);
 	GPIO_PIN_Write(IN2_PORT, IN2_MASK, 0);
+	GPIO_PIN_Write(IN3_PORT, IN3_MASK, 0);
+	GPIO_PIN_Write(IN4_PORT, IN4_MASK, 0);
 }
 
 uint32_t velocity_Calculator(uint32_t adc) {
@@ -86,7 +96,7 @@ uint32_t velocity_Calculator(uint32_t adc) {
 void change_velocity(uint32_t new_velocity) {
 	if(new_velocity <= velocity - 5 || new_velocity >= velocity + 5){
 		velocity = new_velocity;
-		//PWM1_Write(velocity, 4);
+		PWM1_Write(velocity, 4);
 		PWM1_Write(velocity, 5);
 	}
 	

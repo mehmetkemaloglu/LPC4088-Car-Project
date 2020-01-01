@@ -152,10 +152,10 @@ void PWM1_Init() {
 	ioconRegisterValue &= ~(1 << 2 | 1 << 0);
 	IOCON_MOTOR2_SPEED = ioconRegisterValue;
 	
-	PCONP |= (1 << 5);
+	PCONP |= (1 << 6);
 	
 	//Enable PWM output for corresponding pin.
-	PWM1->PCR |= (1<<13);
+	PWM1->PCR |= (1<<12 | 1<<13);
 	
 	
 	PWM1->TCR = 1 << 1;
@@ -178,7 +178,7 @@ void PWM1_Init() {
 	
 	//Enable PWM1_IRQn (Interrupt Request)
 	
-	PWM1_Write(0, 4);
+	PWM1_Write(30, 4);
 	PWM1_Write(30, 5);
 
 }

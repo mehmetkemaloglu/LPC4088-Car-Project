@@ -93,6 +93,5 @@ void Serial_WriteData(char data);
 void Serial_ReadCommand();
 void Serial_DetectCommand(char * chars);
 void write_Characters(char * character);
-void write_Status();
 
 #endif

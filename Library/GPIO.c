@@ -32,7 +32,17 @@ void GPIO_Motor_Init() {
 	ioconRegisterValue &= ~(1 << 0 | 1 << 1 | 1 << 2);
 	IOCON_MOTOR_IN2 = ioconRegisterValue;
 	
+	ioconRegisterValue = IOCON_MOTOR_IN3;
+	ioconRegisterValue &= ~(1 << 0 | 1 << 1 | 1 << 2);
+	IOCON_MOTOR_IN3 = ioconRegisterValue;
+	
+	ioconRegisterValue = IOCON_MOTOR_IN4;
+	ioconRegisterValue &= ~(1 << 0 | 1 << 1 | 1 << 2);
+	IOCON_MOTOR_IN4 = ioconRegisterValue;
+	
 	GPIO_DIR_Write(IN1_PORT, IN1_MASK, 1);
 	GPIO_DIR_Write(IN2_PORT, IN2_MASK, 1);
+	GPIO_DIR_Write(IN3_PORT, IN3_MASK, 1);
+	GPIO_DIR_Write(IN4_PORT, IN4_MASK, 1);
 
 }

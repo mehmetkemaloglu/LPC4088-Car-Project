@@ -67,35 +67,42 @@ void updateTest() {
 		if(status != FORWARD_){
 			GO_FORWARD();
 			status = FORWARD_;
-			if(turn>=10) turn = 0;
 		}
 	}
 	else if(serialSelectedCommand == SERIAL_BACK){
 		if(status != BACKWARD_){
 			GO_BACKWARD();
 			status = BACKWARD_;
-			if(turn>=10) turn = 0;
 		}
 	}
 	else if(serialSelectedCommand == SERIAL_STOP){
 		if(status != STOP_){
 			STOP();
 			status = STOP_;
-			if(turn>=10) turn = 0;
 		}
 	}
 	else if(serialSelectedCommand == SERIAL_LEFT){
 		if(status != LEFT_){
 			TURN_LEFT();
 			status = LEFT_;
-			if(turn>=10) turn = 0;
+			turn = 0;
+		}
+		if(turn >= 6){
+			STOP();
+			status = STOP_;
+			serialSelectedCommand = SERIAL_STOP;
 		}
 	}
 	else if(serialSelectedCommand == SERIAL_RIGHT){
 		if(status != RIGHT_){
 			TURN_RIGHT();
 			status = RIGHT_;
-			if(turn>=10) turn = 0;
+			turn = 0;
+		}
+		if(turn >= 6){
+			STOP();
+			status = STOP_;
+			serialSelectedCommand = SERIAL_STOP;
 		}
 	}
 	
@@ -129,11 +136,7 @@ void updateTest() {
 		}
 		change_velocity(velocity_Calculator(adc[4]));
 	}
-	if(turn >= 10){
-		STOP();
-		status = STOP_;
-		serialSelectedCommand = SERIAL_ELSE;
-	}
+	
 	
 }
 
