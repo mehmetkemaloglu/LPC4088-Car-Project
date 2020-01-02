@@ -34,6 +34,9 @@ void TURN_LEFT_MOTOR();
 void TURN_RIGHT_MOTOR();
 void STOP_MOTOR();
 
+void MOVE_AUTO(uint32_t leftMotor, uint32_t rightMotor);
+
+
 uint32_t velocity_Calculator(uint32_t adc);
 void change_velocity(uint32_t new_velocity);
 

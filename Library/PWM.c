@@ -180,7 +180,6 @@ void PWM1_Init() {
 	
 	PWM1_Write(30, 4);
 	PWM1_Write(30, 5);
-	//PWM1_Cycle_Rate(10);
 
 }
 

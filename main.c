@@ -21,65 +21,13 @@ uint8_t isAuto = 0;
 uint8_t isTest = 0;
 uint32_t isFixStart = 0;
 uint32_t isTurning = 0;
+uint32_t isHardTurning = 0;
+uint32_t LDRStop = 0;
 uint32_t status = 0;
+uint32_t mehmetMode = 0;//2 35ten büyükler|1 15ten küçükler|3 arasi|0 hiçbiri
 uint32_t turnNumber = 0;//20-30 arasi yapilcak özel adim için turn sayaci 
-//todo: Add adc control before every move
+uint32_t mehmetFlag = 0;
 char* message;
-
-
-uint8_t ADCControl(){
-	if(ADC_New_Data_Available == 1){
-			uint32_t* adc = ADC_GetLastValue();
-				if(adc[2] < 0x600 || adc[3] < 0x600){			
-					if(status != STOP_){
-						STOP();
-						lastStatus = status;
-						status = STOP_;
-					}
-					return 1;
-				} else if(status == STOP_){
-					if(lastStatus == FORWARD_){
-						GO_FORWARD();
-						status = FORWARD_;
-					}
-					else if(lastStatus == LEFT_){
-						TURN_LEFT();
-						status = LEFT_;
-					}
-					else if(lastStatus == RIGHT_){
-						TURN_RIGHT();
-						status = RIGHT_;
-					}
-				}
-		}	
-		return 0;
-}
-
-
-void findWayWhenLost(){
-		uint32_t counter = 0;
-		while(ultrasonicSensorDistance > 100 && ADCControl() == 0){
-				STOP();
-				status = STOP_;
-				for(counter = 0; counter< 1000 && ultrasonicSensorDistance > 100; counter++){
-					if(ultrasonicSensorNewDataAvailable == 1){
-						ultrasonicSensorDistance = (ultrasonicSensorFallingCaptureTime - ultrasonicSensorRisingCaptureTime) / 58;
-						ultrasonicSensorNewDataAvailable = 0;
-					}
-				}
-				
-				if(ultrasonicSensorDistance > 100 && ADCControl() == 0){
-					TURN_LEFT();
-					status = LEFT_;
-					turn = 0;
-					while(turn >= 2);
-					if(ultrasonicSensorNewDataAvailable == 1){
-						ultrasonicSensorDistance = (ultrasonicSensorFallingCaptureTime - ultrasonicSensorRisingCaptureTime) / 58;
-						ultrasonicSensorNewDataAvailable = 0;
-					}
-				}
-			}
-}
 
 
 void init() {
@@ -107,7 +55,6 @@ void init() {
 	
 	//Serial_Init();
 	
-	//
 	serialSelectedCommand = SERIAL_TEST;
 	
 	selectedMode =MODE_TEST;
@@ -135,8 +82,13 @@ void autoInit() {
 	status = STOP_;
 	serialSelectedCommand = SERIAL_STOP;
 	STOP();
+	mehmetMode=3;
 	PWM1_Write(50,4);
 	PWM1_Write(50,5);
+	LED1_On();
+	LED2_On();
+	LED3_On();
+	LED4_On();
 }
 
 	
@@ -219,138 +171,98 @@ void updateTest() {
 	
 }
 
-void updateAuto() {
-	if(!isAuto) {
-		autoInit();
-	}
-	if(ultrasonicSensorNewDataAvailable == 1){
-		ultrasonicSensorDistance = (ultrasonicSensorFallingCaptureTime - ultrasonicSensorRisingCaptureTime) / 58;
-		ultrasonicSensorNewDataAvailable = 0;
-	}
-	if (ADCControl() == 0){
-		if(serialSelectedCommand == SERIAL_START){
-			// dön bekle ölç 
-			
-			findWayWhenLost();
-			if(ultrasonicSensorDistance < 18 && ADCControl() == 0) {  //4-1-4 uzaklasir
-					
-					turn = 0;
-					TURN_RIGHT();
-					status = RIGHT_;
-					
-					while(turn<2){
-						while(ADCControl() == 1);
-					}
-					status= FORWARD_;
-					GO_FORWARD();
-					
-					while(turn<3 ){
-						while(ADCControl() == 1);
-					}
-					status=LEFT_;
-					TURN_LEFT();
-					
-					while(turn<5 ){
-						while(ADCControl() == 1);
-					}
-					turn = 0;
-					status=BACKWARD_;
-			}
-			else if(ultrasonicSensorDistance < 75 && ultrasonicSensorDistance > 32 && ADCControl() == 0) { //4-1-4 yaklasir
-						turn = 0;
-						TURN_LEFT();
-						status = LEFT_;
-						
-					
-						while(turn<2){
-							while(ADCControl() == 1);
-						}
-						status= FORWARD_;
-						GO_FORWARD();
-					
-						while(turn<3){
-							while(ADCControl() == 1);
-						}
-						status= RIGHT_;
-						TURN_RIGHT();
-					
-						while(turn<5){
-							while(ADCControl() == 1);
-						}
-						turn = 0;
-						status=BACKWARD_;
-				
-			}
-			else if(ultrasonicSensorDistance <= 32 && ultrasonicSensorDistance >= 18 && ADCControl() == 0) { //caseler gelistirilmeli
-				
-				turn = 0;
-				GO_FORWARD();
-				status = FORWARD_;
-				lastDistance = ultrasonicSensorDistance;
-				while(turn<1){
-						while(ADCControl() == 1);
-					}
-				
-				if (lastDistance>=ultrasonicSensorDistance ){
-						uint32_t diff = lastDistance - ultrasonicSensorDistance ;
-						if (diff >= 6){
-							TURN_RIGHT();
-							turnNumber=3;
-						}
-						else if (diff >= 5){
-							TURN_RIGHT();
-							turnNumber=2;
-						}
-						else if (diff >= 3){
-							TURN_RIGHT();
-							turnNumber=1;
-						}
-						else if (diff >= 1){
-							GO_FORWARD();
-							turnNumber=1;
-						}
-
-						sprintf(message, "%s%d%s", "diff", diff, "\r\n");
-						HM10_Write(message);
-						message = "";
-					}
-				else{
-						uint32_t diff = ultrasonicSensorDistance - lastDistance;
-						if (diff >= 6){
-							TURN_LEFT();
-							turnNumber=3;
-						}
-						else if (diff >= 5){
-							TURN_LEFT();
-							turnNumber=2;
-						}
-						
-						else if (diff >= 3){
-							TURN_LEFT();
-							turnNumber=1;
-						}
-						else if (diff >= 1){
-							GO_FORWARD();
-							turnNumber=1;
-						}
-						sprintf(message, "%s%d%s", "diff", diff, "\r\n");
-						HM10_Write(message);
-						message = "";
-					}
-				
-				while(turn<turnNumber){
-						while(ADCControl() == 1);
-					}
-				turn = 0;
-				
-			}
-		}
-			
-		}	
+void stopCar(){
+	STOP();
+	int i=0;
+	for (int i=0;i<10000;i++);
 	
 }
 
 
+void updateAuto() {
+	if(!isAuto) {
+		autoInit();
+	}
+	
+	if (LDRStop == 0){
+		if(ultrasonicSensorNewDataAvailable == 1){
+			ultrasonicSensorDistance = (ultrasonicSensorFallingCaptureTime - ultrasonicSensorRisingCaptureTime) / 58;
+			ultrasonicSensorNewDataAvailable = 0;
+			/*sprintf(message, "%s%d%s", "distance", ultrasonicSensorDistance, "\r\n");
+			HM10_Write(message);
+			message = "";*/
+
+			if(serialSelectedCommand == SERIAL_START){
+				if(ultrasonicSensorDistance > 100){
+					return;
+				}
+				
+				if(ultrasonicSensorDistance < 18) {
+					if(mehmetFlag != 1) {
+						MOVE_AUTO(70, 50);
+						mehmetFlag = 1;
+					}
+					
+				} else if (ultrasonicSensorDistance < 24) {
+					if(mehmetFlag != 2) {
+						MOVE_AUTO(80, 50);
+						mehmetFlag = 2;
+					}
+				} else if (ultrasonicSensorDistance < 26) {
+					if(mehmetFlag != 3) {
+						MOVE_AUTO(50, 60);
+						mehmetFlag = 3;
+					}
+				} else if (ultrasonicSensorDistance < 28) {
+					if(mehmetFlag != 9) {
+						MOVE_AUTO(50, 80);
+						mehmetFlag = 9;
+					}
+				} else if (ultrasonicSensorDistance < 30) {
+					if(mehmetFlag != 7) {
+						MOVE_AUTO(45, 80);
+						mehmetFlag = 7;
+					}
+				} else if (ultrasonicSensorDistance < 32) {
+					if(mehmetFlag != 4) {
+						MOVE_AUTO(35, 80);
+						mehmetFlag = 4;
+					}
+				} else if (ultrasonicSensorDistance < 38) {
+					if(mehmetFlag != 8) {
+						MOVE_AUTO(30, 80);
+						mehmetFlag = 8;
+					}
+				} else if (ultrasonicSensorDistance < 45) {
+					if(mehmetFlag != 5) {
+						MOVE_AUTO(25, 80);
+						mehmetFlag = 5;
+					}
+				} else {
+					if(mehmetFlag != 6) {
+						MOVE_AUTO(20, 80);
+						mehmetFlag = 6;
+					}
+				}
+			}
+	}
+			
+		}
+	
+		if(ADC_New_Data_Available == 1){
+				uint32_t* adc = ADC_GetLastValue();
+				if(adc[2] < 0x600 || adc[3] < 0x600){			
+					STOP_MOTOR();
+					LDRStop = 1;
+				}
+				else {
+					LDRStop = 0;
+				}
+			//change_velocity(velocity_Calculator(adc[4]));
+			}
+			
+	
+}
 
 int main() {
     init();
@@ -361,12 +273,13 @@ int main() {
 				if (isTest==0){//testInit
 					isTest=1;
 					status=STOP_;
+					STOP();
 				}
 				isAuto = 0;
 				updateTest();
 			}
 			else if(selectedMode == MODE_AUTO){
-				isTest = 1;
+				isTest = 0;
 				updateAuto();
 			}
         

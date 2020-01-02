@@ -161,6 +161,8 @@ void Serial_DetectCommand(char * chars){
 	else if(strcmp(chars, "TEST\r\n") == 0){
 		serialSelectedCommand = SERIAL_TEST;
 		status = STOP_;
+		PWM1_Write(50, 4);
+		PWM1_Write(50, 5);
 	}
 	else{
 		serialSelectedCommand = SERIAL_ELSE;
