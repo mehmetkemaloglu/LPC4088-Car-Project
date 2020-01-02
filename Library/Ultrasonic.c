@@ -30,8 +30,10 @@ void Ultrasonic_Trigger_Timer_Init() {
 	TIMER2->PR = 59;
 	
 	//Write the Correct Configuration for EMR (LOW output value of Trigger Pin when match occurs and Initial value is LOW)
-	TIMER2->EMR |= (1<< 8 | 1<<2);
-	TIMER2->EMR &= ~(1<<9);
+	uint32_t emr = TIMER2->EMR;
+	emr |= (1<< 10);
+	emr &= ~(1<<11 | 1<<3);
+	TIMER2->EMR = emr;
 	
 	NVIC_EnableIRQ(TIMER2_IRQn);
 	
@@ -66,11 +68,11 @@ void Ultrasonic_Capture_Timer_Init() {
 
 void Ultrasonic_Start_Trigger_Timer() {
 	//Change output value of Trigger Pin as HIGH
-	GPIO_PIN_Write(PORT0, (1<<9), HIGH);
+	TIMER2->EMR |= (1<<3);
 	
 	//Give correct value to corresponding MR Register for 10 microsecond
 	//??
-	TIMER2->MR3 = 10 * (TIMER2->PR+1);
+	TIMER2->MR3 = 10/* * (TIMER2->PR+1)*/;
 	//Enable interrupt for MR3 register, if MR3 register matches the TC.
 	TIMER2->MCR |= (1<<9);
 	NVIC_EnableIRQ(TIMER2_IRQn);
@@ -89,7 +91,7 @@ void TIMER2_IRQHandler() {
 	
 	if(ultrasonicSensorTriggerStart == 0) {
 		//Change MR3 Register Value for Suggested Waiting
-		//??
+		//??60000
 		TIMER2->MR3 = 60000 + TIMER2->TC;
 		
 		ultrasonicSensorTriggerStart = 1;

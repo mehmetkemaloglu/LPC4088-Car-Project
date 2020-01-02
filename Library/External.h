@@ -12,13 +12,14 @@ typedef struct
 } EXT_TypeDef;
 
 //0x00000000 is a dummy value, write the correct address
-#define IOCON_PUSH_BUTTON_ADDRESS	0x00000000
-#define IOCON_PUSH_BUTTON	*((volatile uint32_t*)(IOCON_PUSH_BUTTON_ADDRESS))
+#define IOCON_TURN_ADDRESS	0x4002C128
+#define IOCON_TURN	*((volatile uint32_t*)(IOCON_TURN_ADDRESS))
 
 //0x00000000 is a dummy value, write the correct address
-#define EXT_ADDRESS	0x00000000
+#define EXT_ADDRESS	0x400FC140
 #define EXT	((EXT_TypeDef*) EXT_ADDRESS)
 
+extern uint32_t turn;
 void External_Init(void);
 
 #endif

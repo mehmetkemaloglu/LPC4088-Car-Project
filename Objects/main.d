@@ -17,3 +17,8 @@
 .\objects\main.o: Library/ADC.h
 .\objects\main.o: Library/Timer.h
 .\objects\main.o: Library/Ultrasonic.h
+.\objects\main.o: Library/Serial.h
+.\objects\main.o: Library/HM10.h
+.\objects\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+.\objects\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+.\objects\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
