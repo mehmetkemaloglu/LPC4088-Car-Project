@@ -253,7 +253,11 @@ void updateAuto() {
 				uint32_t* adc = ADC_GetLastValue();
 				if(adc[2] < 0x600 || adc[3] < 0x600){			
 					STOP_MOTOR();
+					if(LDRStop == 0){
+						HM10_Write("FINISH\r\n");
+					}
 					LDRStop = 1;
+					
 				}
 				else {
 					LDRStop = 0;

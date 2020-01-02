@@ -3,7 +3,7 @@
 <title>Static Call Graph - [.\Objects\LAB_008.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\Objects\LAB_008.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Thu Jan 02 18:54:31 2020
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Thu Jan 02 19:02:54 2020
 <BR><P>
 <H3>Maximum Stack Usage =       1088 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -422,9 +422,9 @@ Global Symbols
 <P><STRONG><a name="[48]"></a>HM10_ReadCommand</STRONG> (Thumb, 188 bytes, Stack size 1064 bytes, hm10.o(i.HM10_ReadCommand))
 <BR><BR>[Stack]<UL><LI>Max Depth = 1088<LI>Call Chain = HM10_ReadCommand &rArr; __2sprintf
 </UL>
-<BR>[Calls]<UL><LI><a href="#[4b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2sprintf
+<BR>[Calls]<UL><LI><a href="#[47]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HM10_Write
+<LI><a href="#[4b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2sprintf
 <LI><a href="#[49]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Serial_DetectCommand
-<LI><a href="#[47]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HM10_Write
 <LI><a href="#[4a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HM10_ClearBuffer
 </UL>
 <BR>[Called By]<UL><LI><a href="#[32]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
@@ -441,6 +441,7 @@ Global Symbols
 </UL>
 <BR>[Called By]<UL><LI><a href="#[48]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HM10_ReadCommand
 <LI><a href="#[46]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HM10_Init
+<LI><a href="#[74]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;updateAuto
 </UL>
 
 <P><STRONG><a name="[4c]"></a>HM10_WriteData</STRONG> (Thumb, 20 bytes, Stack size 0 bytes, hm10.o(i.HM10_WriteData))
@@ -774,11 +775,12 @@ Global Symbols
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> entry9a.o(.ARM.Collect$$$$0000000B)
 </UL>
-<P><STRONG><a name="[74]"></a>updateAuto</STRONG> (Thumb, 404 bytes, Stack size 8 bytes, main.o(i.updateAuto))
+<P><STRONG><a name="[74]"></a>updateAuto</STRONG> (Thumb, 416 bytes, Stack size 8 bytes, main.o(i.updateAuto))
 <BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = updateAuto &rArr; autoInit &rArr; STOP &rArr; STOP_MOTOR
 </UL>
 <BR>[Calls]<UL><LI><a href="#[56]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;STOP_MOTOR
 <LI><a href="#[51]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MOVE_AUTO
+<LI><a href="#[47]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HM10_Write
 <LI><a href="#[75]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC_GetLastValue
 <LI><a href="#[6b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;autoInit
 </UL>
