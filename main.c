@@ -28,6 +28,7 @@ uint32_t mehmetMode = 0;//2 35ten büyükler|1 15ten küçükler|3 arasi|0 hiçbiri
 uint32_t turnNumber = 0;//20-30 arasi yapilcak özel adim için turn sayaci 
 uint32_t mehmetFlag = 0;
 char* message;
+uint8_t autoFirstTime = 0;
 
 
 void init() {
@@ -85,10 +86,9 @@ void autoInit() {
 	mehmetMode=3;
 	PWM1_Write(50,4);
 	PWM1_Write(50,5);
-	LED1_On();
-	LED2_On();
-	LED3_On();
-	LED4_On();
+	
+	autoFirstTime = 0;
+	
 }
 
 	
@@ -139,7 +139,7 @@ void updateTest() {
 	
 	if(ADC_New_Data_Available == 1){
 		uint32_t* adc = ADC_GetLastValue();
-		if(adc[2] < 0x600 || adc[3] < 0x600){			
+		if(adc[2] < 2400 || adc[3] < 2400){			
 			if(status != STOP_){
 				STOP();
 				lastStatus = status;
@@ -180,80 +180,87 @@ void stopCar(){
 
 
 void updateAuto() {
-	if(!isAuto) {
+	if(isAuto == 0) {
 		autoInit();
 	}
-	
-	if (LDRStop == 0){
-		if(ultrasonicSensorNewDataAvailable == 1){
-			ultrasonicSensorDistance = (ultrasonicSensorFallingCaptureTime - ultrasonicSensorRisingCaptureTime) / 58;
-			ultrasonicSensorNewDataAvailable = 0;
-			/*sprintf(message, "%s%d%s", "distance", ultrasonicSensorDistance, "\r\n");
-			HM10_Write(message);
-			message = "";*/
+	if(serialSelectedCommand == SERIAL_START){
+		if (LDRStop == 0){
+			if(autoFirstTime == 0 && ultrasonicSensorNewDataAvailable == 0){
+				autoFirstTime = 1;
+				if(mehmetFlag != 11) {
+						MOVE_AUTO(40, 40);
+						mehmetFlag = 11;
+					}
 
-			if(serialSelectedCommand == SERIAL_START){
-				if(ultrasonicSensorDistance > 100){
-					return;
-				}
-				
+			}
+			else if(ultrasonicSensorNewDataAvailable == 1){
+				ultrasonicSensorDistance = (ultrasonicSensorFallingCaptureTime - ultrasonicSensorRisingCaptureTime) / 58;
+				ultrasonicSensorNewDataAvailable = 0;
+				/*sprintf(message, "%s%d%s", "distance", ultrasonicSensorDistance, "\r\n");
+				HM10_Write(message);
+				message = "";*/
+		
+			
+								
 				if(ultrasonicSensorDistance < 18) {
 					if(mehmetFlag != 1) {
-						MOVE_AUTO(70, 50);
+						MOVE_AUTO(60, 30);
 						mehmetFlag = 1;
 					}
 					
-				} else if (ultrasonicSensorDistance < 24) {
+				} else if (ultrasonicSensorDistance < 21) {
 					if(mehmetFlag != 2) {
-						MOVE_AUTO(80, 50);
+						MOVE_AUTO(60, 40);
 						mehmetFlag = 2;
 					}
 				} else if (ultrasonicSensorDistance < 26) {
 					if(mehmetFlag != 3) {
-						MOVE_AUTO(50, 60);
+						MOVE_AUTO(30, 65);
 						mehmetFlag = 3;
 					}
 				} else if (ultrasonicSensorDistance < 28) {
 					if(mehmetFlag != 9) {
-						MOVE_AUTO(50, 80);
+						MOVE_AUTO(25, 65);
 						mehmetFlag = 9;
 					}
 				} else if (ultrasonicSensorDistance < 30) {
 					if(mehmetFlag != 7) {
-						MOVE_AUTO(45, 80);
+						MOVE_AUTO(20, 65);
 						mehmetFlag = 7;
 					}
 				} else if (ultrasonicSensorDistance < 32) {
 					if(mehmetFlag != 4) {
-						MOVE_AUTO(35, 80);
+						MOVE_AUTO(20, 60);
 						mehmetFlag = 4;
 					}
 				} else if (ultrasonicSensorDistance < 38) {
 					if(mehmetFlag != 8) {
-						MOVE_AUTO(30, 80);
+						MOVE_AUTO(20, 55);
 						mehmetFlag = 8;
 					}
 				} else if (ultrasonicSensorDistance < 45) {
 					if(mehmetFlag != 5) {
-						MOVE_AUTO(25, 80);
+						MOVE_AUTO(15, 55);
 						mehmetFlag = 5;
 					}
-				} else {
+				} else if(ultrasonicSensorDistance <400){
+					
 					if(mehmetFlag != 6) {
-						MOVE_AUTO(20, 80);
+						MOVE_AUTO(15, 60);
 						mehmetFlag = 6;
 					}
 				}
+				else return;
 			}
 	}
 			
-		}
+		
 	
 		if(ADC_New_Data_Available == 1){
 				uint32_t* adc = ADC_GetLastValue();
-				if(adc[2] < 0x600 || adc[3] < 0x600){			
-					STOP_MOTOR();
-					if(LDRStop == 0){
+				if(adc[2] < 2400 || adc[3] < 2400){			
+					STOP();
+					if(LDRStop == 0 && serialSelectedCommand == SERIAL_START){
 						HM10_Write("FINISH\r\n");
 					}
 					LDRStop = 1;
@@ -264,6 +271,7 @@ void updateAuto() {
 				}
 			//change_velocity(velocity_Calculator(adc[4]));
 			}
+	}
 			
 	
 }

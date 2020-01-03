@@ -5,6 +5,7 @@
 uint8_t HM10CurrentBufferIndex = 0;
 uint8_t HM10NewDataAvailable = 0;
 uint8_t HM10EndOfLine = 0;
+uint32_t statusCame = 0;
 
 char HM10Buffer[HM10BufferSize];
 
@@ -121,7 +122,7 @@ void HM10_ReadCommand(){
 				op_mode = "TEST";
 			}
 			uint32_t ultrasonicSensorDistance = (ultrasonicSensorFallingCaptureTime - ultrasonicSensorRisingCaptureTime) / 58;
-			sprintf(status, "%s%d%s%d%s%d%s%s%s", "{\"distance\":", ultrasonicSensorDistance,",\"light_level_left\":", ADC_Last_Value[2]/4, ",\"light_level_right\":", ADC_Last_Value[3]/4, ",\"op_mode\":\"", op_mode, "\"}\r\n");
+			sprintf(status, "%s%d%s%d%s%d%s%s%s", "{\"distance\":", ultrasonicSensorDistance,",\"light_level_left\":", ADC_Last_Value[2], ",\"light_level_right\":", ADC_Last_Value[3], ",\"op_mode\":\"", op_mode, "\"}\r\n");
 			HM10_Write(status);
 			serialSelectedCommand = SERIAL_ELSE;
 		}
