@@ -89,6 +89,13 @@ void MOVE_AUTO(uint32_t leftMotor, uint32_t rightMotor) {
 	GPIO_PIN_Write(IN2_PORT, IN2_MASK, 0);
 	GPIO_PIN_Write(IN3_PORT, IN3_MASK, 0);
 	GPIO_PIN_Write(IN4_PORT, IN4_MASK, 1);
+	
+	if(leftMotor > rightMotor) {
+		TURN_RIGHT_LED();
+	} else {
+		TURN_LEFT_LED();
+	}
+	
 }
 
 uint32_t velocity_Calculator(uint32_t adc) {
