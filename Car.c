@@ -81,6 +81,23 @@ void STOP_MOTOR() {
 	GPIO_PIN_Write(IN4_PORT, IN4_MASK, 0);
 }
 
+void MOVE_AUTO(uint32_t leftMotor, uint32_t rightMotor) {
+	PWM1_Write(leftMotor, 5);
+	PWM1_Write(rightMotor, 4);
+	
+	GPIO_PIN_Write(IN1_PORT, IN1_MASK, 1);
+	GPIO_PIN_Write(IN2_PORT, IN2_MASK, 0);
+	GPIO_PIN_Write(IN3_PORT, IN3_MASK, 0);
+	GPIO_PIN_Write(IN4_PORT, IN4_MASK, 1);
+	
+	if(leftMotor > rightMotor) {
+		TURN_RIGHT_LED();
+	} else {
+		TURN_LEFT_LED();
+	}
+	
+}
+
 uint32_t velocity_Calculator(uint32_t adc) {
 	uint32_t vel = 0;
 	if(adc < 0x34) {

@@ -87,6 +87,7 @@ extern uint8_t serialTransmitCompleted;
 extern uint32_t serialSelectedCommand;
 extern uint32_t selectedMode;
 extern uint32_t status;
+extern uint32_t statusCame;
 
 void Serial_Init(void);
 char Serial_ReadData(void);

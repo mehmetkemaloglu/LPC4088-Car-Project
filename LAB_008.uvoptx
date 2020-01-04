@@ -152,9 +152,9 @@
         <Bp>
           <Number>0</Number>
           <Type>0</Type>
-          <LineNumber>183</LineNumber>
+          <LineNumber>102</LineNumber>
           <EnabledFlag>1</EnabledFlag>
-          <Address>6014</Address>
+          <Address>6686</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
@@ -163,14 +163,14 @@
           <BreakIfRCount>1</BreakIfRCount>
           <Filename>.\main.c</Filename>
           <ExecCommand></ExecCommand>
-          <Expression>\\LAB_008\main.c\183</Expression>
+          <Expression>\\LAB_008\main.c\102</Expression>
         </Bp>
         <Bp>
           <Number>1</Number>
           <Type>0</Type>
-          <LineNumber>175</LineNumber>
+          <LineNumber>186</LineNumber>
           <EnabledFlag>1</EnabledFlag>
-          <Address>5962</Address>
+          <Address>6168</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
@@ -179,7 +179,39 @@
           <BreakIfRCount>1</BreakIfRCount>
           <Filename>.\main.c</Filename>
           <ExecCommand></ExecCommand>
-          <Expression>\\LAB_008\main.c\175</Expression>
+          <Expression>\\LAB_008\main.c\186</Expression>
+        </Bp>
+        <Bp>
+          <Number>2</Number>
+          <Type>0</Type>
+          <LineNumber>115</LineNumber>
+          <EnabledFlag>1</EnabledFlag>
+          <Address>1670</Address>
+          <ByteObject>0</ByteObject>
+          <HtxType>0</HtxType>
+          <ManyObjects>0</ManyObjects>
+          <SizeOfObject>0</SizeOfObject>
+          <BreakByAccess>0</BreakByAccess>
+          <BreakIfRCount>1</BreakIfRCount>
+          <Filename>.\Library\HM10.c</Filename>
+          <ExecCommand></ExecCommand>
+          <Expression>\\LAB_008\Library/HM10.c\115</Expression>
+        </Bp>
+        <Bp>
+          <Number>3</Number>
+          <Type>0</Type>
+          <LineNumber>101</LineNumber>
+          <EnabledFlag>1</EnabledFlag>
+          <Address>1604</Address>
+          <ByteObject>0</ByteObject>
+          <HtxType>0</HtxType>
+          <ManyObjects>0</ManyObjects>
+          <SizeOfObject>0</SizeOfObject>
+          <BreakByAccess>0</BreakByAccess>
+          <BreakIfRCount>1</BreakIfRCount>
+          <Filename>.\Library\HM10.c</Filename>
+          <ExecCommand></ExecCommand>
+          <Expression>\\LAB_008\Library/HM10.c\101</Expression>
         </Bp>
       </Breakpoint>
       <WatchWindow1>
@@ -348,6 +380,11 @@
           <WinNumber>1</WinNumber>
           <ItemText>turn</ItemText>
         </Ww>
+        <Ww>
+          <count>33</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>LDRStop</ItemText>
+        </Ww>
       </WatchWindow1>
       <MemoryWindow1>
         <Mm>
@@ -401,6 +438,10 @@
       <pMultCmdsp></pMultCmdsp>
       <SystemViewers>
         <Entry>
+          <Name>System Viewer\ADC</Name>
+          <WinId>35904</WinId>
+        </Entry>
+        <Entry>
           <Name>System Viewer\PWM1</Name>
           <WinId>35905</WinId>
         </Entry>
@@ -438,7 +479,7 @@
       <GroupNumber>2</GroupNumber>
       <FileNumber>2</FileNumber>
       <FileType>1</FileType>
-      <tvExp>1</tvExp>
+      <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>.\Library\GPIO.c</PathWithFileName>
@@ -462,7 +503,7 @@
       <GroupNumber>2</GroupNumber>
       <FileNumber>4</FileNumber>
       <FileType>1</FileType>
-      <tvExp>1</tvExp>
+      <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>.\Library\PWM.c</PathWithFileName>
@@ -474,7 +515,7 @@
       <GroupNumber>2</GroupNumber>
       <FileNumber>5</FileNumber>
       <FileType>1</FileType>
-      <tvExp>1</tvExp>
+      <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>.\Library\External.c</PathWithFileName>
@@ -498,7 +539,7 @@
       <GroupNumber>2</GroupNumber>
       <FileNumber>7</FileNumber>
       <FileType>1</FileType>
-      <tvExp>1</tvExp>
+      <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>.\Car.c</PathWithFileName>
